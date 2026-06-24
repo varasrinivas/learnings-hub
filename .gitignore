@@ -1,0 +1,25 @@
+# Claude Code local config
+.claude/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+*~
+.vscode/
+.idea/
+
+# Temp / build / test artifacts
+*.log
+*.tmp
+*.png
+.playwright-mcp/
+
+# Secrets / credentials (defensive — none are committed)
+.env
+.env.*
+*.pem
+*.key
+*.pfx
+**/credentials
+**/*secret*.json

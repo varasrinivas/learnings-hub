@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learnings — Courses for developers who already code</title>
+<meta name="description" content="Hands-on, animated courses that teach a new language to developers who already program in another.">
+<meta name="theme-color" content="#0f0f1a">
+<link rel="icon" type="image/png" href="java-fundamentals-course/icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-primary:#0f0f1a; --bg-surface:#1a1a2e; --bg-elevated:#242442;
+  --text-primary:#e8e8e8; --text-secondary:#a0a0b8; --text-muted:#6b6b80;
+  --accent-cyan:#00d4ff; --accent-purple:#b088f9; --accent-emerald:#06d6a0;
+  --java:#ffb627; --python:#4584b6;
+  --font-display:'Fraunces',serif; --font-body:'Inter',sans-serif; --font-code:'JetBrains Mono',monospace;
+  --radius:14px; --transition:400ms ease-out;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg-primary);color:var(--text-primary);font-family:var(--font-body);line-height:1.65;-webkit-font-smoothing:antialiased;min-height:100vh;
+  background-image:radial-gradient(circle at 12% 8%, rgba(0,212,255,0.08), transparent 42%), radial-gradient(circle at 88% 0%, rgba(176,136,249,0.10), transparent 45%);}
+.wrap{max-width:960px;margin:0 auto;padding:0 22px}
+
+header{padding:88px 0 26px;text-align:center}
+header .kicker{font-family:var(--font-code);font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-cyan);margin-bottom:16px}
+header h1{font-family:var(--font-display);font-weight:700;font-size:clamp(2.2rem,7vw,4rem);line-height:1.04;letter-spacing:-.02em;margin-bottom:18px}
+header h1 .grad{background:linear-gradient(100deg,var(--accent-cyan),var(--accent-purple));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+header p{color:var(--text-secondary);font-size:1.16rem;max-width:56ch;margin:0 auto}
+
+main{padding:26px 0 40px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:22px}
+
+.card{position:relative;display:flex;flex-direction:column;background:var(--bg-surface);border:1px solid var(--bg-elevated);border-radius:var(--radius);padding:28px;text-decoration:none;color:var(--text-primary);overflow:hidden;transition:var(--transition)}
+.card::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:var(--c)}
+.card:hover{transform:translateY(-4px);border-color:var(--c);box-shadow:0 14px 40px rgba(0,0,0,.45)}
+.card:focus-visible{outline:2px solid var(--c);outline-offset:3px}
+
+.chip{width:60px;height:60px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:1.5rem;color:#0f0f1a;margin-bottom:20px;background:linear-gradient(135deg,var(--c),color-mix(in srgb,var(--c) 55%,#fff))}
+.chip svg{width:34px;height:34px}
+.card h2{font-family:var(--font-display);font-weight:600;font-size:1.5rem;letter-spacing:-.01em;margin-bottom:8px}
+.card p{color:var(--text-secondary);font-size:.96rem;margin-bottom:18px;flex:1}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.tag{font-family:var(--font-code);font-size:.7rem;letter-spacing:.04em;color:var(--text-secondary);background:var(--bg-elevated);border:1px solid transparent;padding:5px 10px;border-radius:999px}
+.cta{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.95rem;color:var(--c)}
+.cta .arrow{transition:transform var(--transition)}
+.card:hover .cta .arrow{transform:translateX(4px)}
+
+footer{text-align:center;color:var(--text-muted);font-size:.85rem;padding:24px 0 70px}
+footer a{color:var(--text-secondary);text-decoration:none}
+footer a:hover{color:var(--accent-cyan)}
+
+@media(max-width:560px){header{padding:60px 0 18px}.grid{grid-template-columns:1fr}.card{padding:22px}}
+@media(prefers-reduced-motion:reduce){*{transition-duration:0ms!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <p class="kicker">Learnings · varasrinivas.com</p>
+    <h1>Learn a new language,<br><span class="grad">the way it actually works</span></h1>
+    <p>Animated, diagram-rich courses for developers who already code. Pick the one you want — each skips the basics and teaches idioms, the runtime model, and the <em>why</em>.</p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="grid">
+
+      <a class="card" style="--c:var(--java)" href="java-fundamentals-course/">
+        <span class="chip" aria-hidden="true">
+          <svg viewBox="0 0 512 512" fill="none" stroke="#0f0f1a" stroke-width="26" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M206 150 q-16 22 0 44"/><path d="M256 138 q-18 24 0 48"/><path d="M306 150 q-16 22 0 44"/>
+            <path d="M156 232 L300 232 L290 332 Q284 366 250 366 L206 366 Q172 366 166 332 Z"/>
+            <path d="M300 252 Q352 256 352 292 Q352 326 300 322"/><path d="M138 392 L322 392"/>
+          </svg>
+        </span>
+        <h2>Java for Developers</h2>
+        <p>The JVM, the type system, modern Java, and the real-world backend stack — across 28 animated modules with runnable playgrounds and "coming from Python/JS/Go/C#" callouts.</p>
+        <div class="tags">
+          <span class="tag">28 modules · 5 tracks</span>
+          <span class="tag">animated</span>
+          <span class="tag">installable · offline (PWA)</span>
+        </div>
+        <span class="cta">Start the course <span class="arrow">→</span></span>
+      </a>
+
+      <a class="card" style="--c:var(--python)" href="python-java-course/">
+        <span class="chip" aria-hidden="true">Py</span>
+        <h2>Python for Java Developers</h2>
+        <p>Coming the other way? Learn Python through a Java lens — the data model, idioms, and standard library mapped to what you already know, with side-by-side comparisons.</p>
+        <div class="tags">
+          <span class="tag">Java → Python</span>
+          <span class="tag">side-by-side</span>
+          <span class="tag">desktop &amp; mobile editions</span>
+        </div>
+        <span class="cta">Start the course <span class="arrow">→</span></span>
+      </a>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">More courses coming · <a href="https://varasrinivas.com">varasrinivas.com</a></div>
+</footer>
+</body>
+</html>
