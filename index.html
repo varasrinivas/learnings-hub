@@ -54,6 +54,24 @@ footer a:hover{color:var(--accent-cyan)}
 
 @media(max-width:560px){header{padding:60px 0 18px}.grid{grid-template-columns:1fr}.card{padding:22px}}
 @media(prefers-reduced-motion:reduce){*{transition-duration:0ms!important}}
+
+.grid{align-items:start}
+.card.has-index:hover{transform:none}
+.card-main{display:flex;flex-direction:column;text-decoration:none;color:var(--text-primary)}
+.card-main:focus-visible{outline:2px solid var(--c);outline-offset:3px;border-radius:8px}
+.card-main:hover .cta .arrow{transform:translateX(4px)}
+.modidx{margin-top:20px;border-top:1px solid var(--bg-elevated);padding-top:14px}
+.modidx>summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;font-family:var(--font-code);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--c);user-select:none}
+.modidx>summary::-webkit-details-marker{display:none}
+.modidx>summary::after{content:"\25B8";margin-left:auto;font-size:.9rem;transition:transform var(--transition)}
+.modidx[open]>summary::after{transform:rotate(90deg)}
+.modidx .cnt{font-family:var(--font-code);font-size:.64rem;letter-spacing:.04em;color:var(--text-muted);background:var(--bg-elevated);border-radius:999px;padding:2px 8px}
+.modidx-body{margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:14px 18px}
+.trk{display:flex;flex-direction:column;gap:2px;min-width:0}
+.trk-h{font-family:var(--font-code);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:4px}
+.trk a{font-size:.82rem;line-height:1.3;color:var(--text-secondary);text-decoration:none;padding:1px 0;transition:color var(--transition)}
+.trk a:hover{color:var(--c)}
+@media(max-width:560px){.modidx-body{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -99,22 +117,86 @@ footer a:hover{color:var(--accent-cyan)}
         <span class="cta">Start the course <span class="arrow">→</span></span>
       </a>
 
-      <a class="card" style="--c:var(--spring)" href="spring-boot-course/">
-        <span class="chip" aria-hidden="true">
-          <svg viewBox="0 0 512 512" fill="none" stroke="#0f0f1a" stroke-width="26" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M150 366 Q150 168 364 148 Q362 360 202 384 Q172 388 150 366 Z"/>
-            <path d="M186 360 Q262 280 332 206"/>
-          </svg>
-        </span>
-        <h2>Spring Boot &amp; Microservices</h2>
-        <p>From the core Spring container to a deployed cloud platform — IoC/DI, Boot, REST, JPA, and security, then decomposing the monolith into microservices with Kafka messaging, resilience, observability, and Kubernetes. 37 modules built on one real domain, each with a "Coming From Java" callout.</p>
-        <div class="tags">
-          <span class="tag">37 modules · 9 tracks</span>
-          <span class="tag">diagram-rich · dark</span>
-          <span class="tag">monolith → microservices</span>
-        </div>
-        <span class="cta">Start the course <span class="arrow">→</span></span>
-      </a>
+      <div class="card has-index" style="--c:var(--spring)">
+        <a class="card-main" href="spring-boot-course/">
+          <span class="chip" aria-hidden="true">
+            <svg viewBox="0 0 512 512" fill="none" stroke="#0f0f1a" stroke-width="26" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M150 366 Q150 168 364 148 Q362 360 202 384 Q172 388 150 366 Z"/>
+              <path d="M186 360 Q262 280 332 206"/>
+            </svg>
+          </span>
+          <h2>Spring Boot &amp; Microservices</h2>
+          <p>From the core Spring container to a deployed cloud platform — IoC/DI, Boot, REST, JPA, and security, then decomposing the monolith into microservices with Kafka messaging, resilience, observability, and Kubernetes. 37 modules built on one real domain, each with a "Coming From Java" callout.</p>
+          <div class="tags">
+            <span class="tag">37 modules · 9 tracks</span>
+            <span class="tag">diagram-rich · dark</span>
+            <span class="tag">monolith → microservices</span>
+          </div>
+          <span class="cta">Start the course <span class="arrow">→</span></span>
+        </a>
+        <details class="modidx">
+          <summary>Jump to a module <span class="cnt">37</span></summary>
+          <div class="modidx-body">
+            <div class="trk"><span class="trk-h">Orientation</span>
+              <a href="spring-boot-course/#orientation">M00 · Course Orientation &amp; Setup</a>
+            </div>
+            <div class="trk"><span class="trk-h">Spring Core</span>
+              <a href="spring-boot-course/#dependency-injection">M01 · IoC &amp; Dependency Injection</a>
+              <a href="spring-boot-course/#beans-lifecycle">M02 · Beans, Scopes &amp; Lifecycle</a>
+              <a href="spring-boot-course/#aop">M03 · Aspect-Oriented Programming</a>
+              <a href="spring-boot-course/#spring-mvc">M04 · Spring MVC Fundamentals</a>
+            </div>
+            <div class="trk"><span class="trk-h">Boot Essentials</span>
+              <a href="spring-boot-course/#first-boot-app">M05 · Your First Spring Boot App</a>
+              <a href="spring-boot-course/#auto-configuration">M06 · Auto-Configuration &amp; Starters</a>
+              <a href="spring-boot-course/#configuration-profiles">M07 · Configuration &amp; Profiles</a>
+              <a href="spring-boot-course/#devtools-actuator">M08 · DevTools &amp; Actuator</a>
+            </div>
+            <div class="trk"><span class="trk-h">REST APIs</span>
+              <a href="spring-boot-course/#rest-controllers">M09 · REST Controllers</a>
+              <a href="spring-boot-course/#validation-error-handling">M10 · Request Validation &amp; Error Handling</a>
+              <a href="spring-boot-course/#api-docs">M11 · API Documentation</a>
+              <a href="spring-boot-course/#pagination-hateoas">M12 · Pagination, Filtering &amp; HATEOAS</a>
+            </div>
+            <div class="trk"><span class="trk-h">Data · JPA</span>
+              <a href="spring-boot-course/#entities-repositories">M13 · Entities &amp; Repositories</a>
+              <a href="spring-boot-course/#custom-queries">M14 · Custom Queries &amp; Specifications</a>
+              <a href="spring-boot-course/#transactions-caching">M15 · Transactions &amp; Caching</a>
+              <a href="spring-boot-course/#database-migrations">M16 · Database Migrations</a>
+            </div>
+            <div class="trk"><span class="trk-h">Security</span>
+              <a href="spring-boot-course/#security-fundamentals">M17 · Security Fundamentals</a>
+              <a href="spring-boot-course/#jwt-auth">M18 · JWT Authentication</a>
+              <a href="spring-boot-course/#oauth2-resource-server">M19 · OAuth2 Resource Server</a>
+              <a href="spring-boot-course/#method-security">M20 · Method-Level Security</a>
+            </div>
+            <div class="trk"><span class="trk-h">Microservices</span>
+              <a href="spring-boot-course/#monolith-to-microservices">M21 · Monolith to Microservices</a>
+              <a href="spring-boot-course/#centralized-config">M22 · Centralized Configuration</a>
+              <a href="spring-boot-course/#service-discovery">M23 · Service Discovery</a>
+              <a href="spring-boot-course/#api-gateway">M24 · API Gateway</a>
+            </div>
+            <div class="trk"><span class="trk-h">Communication</span>
+              <a href="spring-boot-course/#sync-communication">M25 · Synchronous Communication</a>
+              <a href="spring-boot-course/#event-messaging">M26 · Event-Driven Messaging</a>
+              <a href="spring-boot-course/#saga-pattern">M27 · Saga Pattern</a>
+              <a href="spring-boot-course/#event-sourcing-cqrs">M28 · Event Sourcing &amp; CQRS</a>
+            </div>
+            <div class="trk"><span class="trk-h">Resilience</span>
+              <a href="spring-boot-course/#circuit-breakers">M29 · Circuit Breakers &amp; Retry</a>
+              <a href="spring-boot-course/#distributed-tracing">M30 · Distributed Tracing</a>
+              <a href="spring-boot-course/#centralized-logging">M31 · Centralized Logging</a>
+              <a href="spring-boot-course/#health-monitoring">M32 · Health Checks &amp; Monitoring</a>
+            </div>
+            <div class="trk"><span class="trk-h">Deployment</span>
+              <a href="spring-boot-course/#docker">M33 · Docker for Spring Boot</a>
+              <a href="spring-boot-course/#docker-compose">M34 · Docker Compose</a>
+              <a href="spring-boot-course/#kubernetes">M35 · Kubernetes Essentials</a>
+              <a href="spring-boot-course/#cicd">M36 · CI/CD Pipeline</a>
+            </div>
+          </div>
+        </details>
+      </div>
 
     </div>
   </div>
