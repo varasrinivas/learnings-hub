@@ -15,6 +15,7 @@ courses, responsive, and accessible (honors `prefers-reduced-motion`).
 | AWS AI-DLC — Method, Engines & Leadership | [`/ai-dlc-course/`](https://learnings.varasrinivas.com/ai-dlc-course/) | [ai-dlc-course](https://github.com/varasrinivas/ai-dlc-course) |
 | Full-Stack Microservices — The Spice Route | [`/fullstack-course/`](https://learnings.varasrinivas.com/fullstack-course/) | [fullstack-course](https://github.com/varasrinivas/fullstack-course) |
 | Angular Mastery — Beginner to Production | [`/angular-course/`](https://learnings.varasrinivas.com/angular-course/) | [angular-course](https://github.com/varasrinivas/angular-course) |
+| Full-Stack TypeScript for Java Developers (NestJS + Angular) | [`/nestjs-angular-course/`](https://learnings.varasrinivas.com/nestjs-angular-course/) | [nestjs-angular](https://github.com/varasrinivas/nestjs-angular) |
 
 ## Adding a course
 Each course lives under its own top-level folder in the site bucket. To list a new one, add a `<a class="card">`
