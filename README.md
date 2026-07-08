@@ -13,6 +13,7 @@ courses, responsive, and accessible (honors `prefers-reduced-motion`).
 | Python for Java Developers | [`/python-java-course/`](https://learnings.varasrinivas.com/python-java-course/) | — |
 | Spring Boot & Microservices | [`/spring-boot-course/`](https://learnings.varasrinivas.com/spring-boot-course/) | [spring-boot-course](https://github.com/varasrinivas/spring-boot-course) |
 | AWS AI-DLC — Method, Engines & Leadership | [`/ai-dlc-course/`](https://learnings.varasrinivas.com/ai-dlc-course/) | [ai-dlc-course](https://github.com/varasrinivas/ai-dlc-course) |
+| Full-Stack Microservices — The Spice Route | [`/fullstack-course/`](https://learnings.varasrinivas.com/fullstack-course/) | [fullstack-course](https://github.com/varasrinivas/fullstack-course) |
 
 ## Adding a course
 Each course lives under its own top-level folder in the site bucket. To list a new one, add a `<a class="card">`
@@ -24,5 +25,5 @@ bucket-root object:
 ```bash
 aws s3 cp index.html s3://learnings.varasrinivas.com/index.html \
   --content-type "text/html; charset=utf-8" --cache-control "public, max-age=300"
-aws cloudfront create-invalidation --distribution-id <DIST_ID> --paths "/*"
+aws cloudfront create-invalidation --distribution-id ESC8HMAS41DRF --paths "/*"
 ```
