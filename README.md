@@ -11,6 +11,7 @@ courses, responsive, and accessible (honors `prefers-reduced-motion`).
 |--------|------|------|
 | Java for Developers | [`/java-fundamentals-course/`](https://learnings.varasrinivas.com/java-fundamentals-course/) | [java-fundamentals-course](https://github.com/varasrinivas/java-fundamentals-course) |
 | Python for Java Developers | [`/python-java-course/`](https://learnings.varasrinivas.com/python-java-course/) | — |
+| AWS AI-DLC — Method, Engines & Leadership | [`/ai-dlc-course/`](https://learnings.varasrinivas.com/ai-dlc-course/) | [ai-dlc-course](https://github.com/varasrinivas/ai-dlc-course) |
 
 ## Adding a course
 Each course lives under its own top-level folder in the site bucket. To list a new one, add a `<a class="card">`
