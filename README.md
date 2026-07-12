@@ -17,6 +17,7 @@ courses, responsive, and accessible (honors `prefers-reduced-motion`).
 | Angular Mastery — Beginner to Production | [`/angular-course/`](https://learnings.varasrinivas.com/angular-course/) | [angular-course](https://github.com/varasrinivas/angular-course) |
 | Full-Stack TypeScript for Java Developers (NestJS + Angular) | [`/nestjs-angular-course/`](https://learnings.varasrinivas.com/nestjs-angular-course/) | [nestjs-angular](https://github.com/varasrinivas/nestjs-angular) |
 | Data Engineering with PySpark | [`/data-engineering-course/`](https://learnings.varasrinivas.com/data-engineering-course/) | [data-engineering-course](https://github.com/varasrinivas/data-engineering-course) |
+| Data Engineering Core — Interview-Ready | [`/data-engineering-fundamentals/`](https://learnings.varasrinivas.com/data-engineering-fundamentals/) | [data-engineering-fundamentals-course](https://github.com/varasrinivas/data-engineering-fundamentals-course) |
 
 ## Adding a course
 Each course lives under its own top-level folder in the site bucket. To list a new one, add a `<a class="card">`
