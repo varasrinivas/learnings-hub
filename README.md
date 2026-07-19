@@ -13,9 +13,7 @@ courses, responsive, and accessible (honors `prefers-reduced-motion`).
 | Python for Java Developers | [`/python-java-course/`](https://learnings.varasrinivas.com/python-java-course/) | — |
 | Spring Boot & Microservices | [`/spring-boot-course/`](https://learnings.varasrinivas.com/spring-boot-course/) | [spring-boot-course](https://github.com/varasrinivas/spring-boot-course) |
 | AWS AI-DLC — Method, Engines & Leadership | [`/ai-dlc-course/`](https://learnings.varasrinivas.com/ai-dlc-course/) | [ai-dlc-course](https://github.com/varasrinivas/ai-dlc-course) |
-| Full-Stack Microservices — The Spice Route | [`/fullstack-course/`](https://learnings.varasrinivas.com/fullstack-course/) | [fullstack-course](https://github.com/varasrinivas/fullstack-course) |
-| Angular Mastery — Beginner to Production | [`/angular-course/`](https://learnings.varasrinivas.com/angular-course/) | [angular-course](https://github.com/varasrinivas/angular-course) |
-| Full-Stack TypeScript for Java Developers (NestJS + Angular) | [`/nestjs-angular-course/`](https://learnings.varasrinivas.com/nestjs-angular-course/) | [nestjs-angular](https://github.com/varasrinivas/nestjs-angular) |
+| AI-DLC for Sprint Teams — Prior Auth Portal | [`/ai-dlc-sprint-teams/`](https://learnings.varasrinivas.com/ai-dlc-sprint-teams/) | — (local: `ai-dlc-sprint-teams`) |
 | Data Engineering with PySpark | [`/data-engineering-course/`](https://learnings.varasrinivas.com/data-engineering-course/) | [data-engineering-course](https://github.com/varasrinivas/data-engineering-course) |
 | Data Engineering Core — Interview-Ready | [`/data-engineering-fundamentals/`](https://learnings.varasrinivas.com/data-engineering-fundamentals/) | [data-engineering-fundamentals-course](https://github.com/varasrinivas/data-engineering-fundamentals-course) |
 

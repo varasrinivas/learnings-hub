@@ -15,7 +15,7 @@
   --bg-primary:#0f0f1a; --bg-surface:#1a1a2e; --bg-elevated:#242442;
   --text-primary:#e8e8e8; --text-secondary:#a0a0b8; --text-muted:#6b6b80;
   --accent-cyan:#00d4ff; --accent-purple:#b088f9; --accent-emerald:#06d6a0;
-  --java:#ffb627; --python:#4584b6; --spring:#6db33f; --aidlc:#ff9900; --spice:#c4531f; --angular:#dd0031; --nestng:#0dc5c1; --de:#e25a1c; --decore:#17a58c;
+  --java:#ffb627; --python:#4584b6; --spring:#6db33f; --aidlc:#ff9900; --de:#e25a1c; --decore:#17a58c --sprint:#e2cf9f;
   --font-display:'Fraunces',serif; --font-body:'Inter',sans-serif; --font-code:'JetBrains Mono',monospace;
   --radius:14px; --transition:400ms ease-out;
 }
@@ -323,217 +323,75 @@ footer a:hover{color:var(--accent-cyan)}
         </details>
       </div>
 
-      <div class="card has-index" style="--c:var(--spice)">
-        <a class="card-main" href="fullstack-course/">
+      <div class="card has-index" style="--c:var(--sprint)">
+        <a class="card-main" href="ai-dlc-sprint-teams/">
           <span class="chip" aria-hidden="true">
             <svg viewBox="0 0 512 512" fill="none" stroke="#0f0f1a" stroke-width="26" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M206 130 q-16 22 0 44"/><path d="M256 118 q-18 24 0 48"/><path d="M306 130 q-16 22 0 44"/>
-              <path d="M132 246 L380 246 Q380 384 256 384 Q132 384 132 246 Z"/>
-              <path d="M172 428 L340 428"/>
+              <circle cx="256" cy="256" r="150"/>
+              <path d="M196 260 L240 304 L328 208"/>
             </svg>
           </span>
-          <h2>Full-Stack Microservices — The Spice Route</h2>
-          <p>Angular microfrontends under single-spa, a NestJS BFF (REST + GraphQL), Spring Boot services, Camunda workflows, and Kafka events — taught to beginners through one continuous story: a food court where every concept is a stall, a steward, or a ticket on the rail. Every lab has a smoke-tested reference solution.</p>
+          <h2>AI-DLC for Sprint Teams &mdash; Prior Auth Portal</h2>
+          <p>AWS&rsquo;s AI-Driven Development Lifecycle adopted by one sprint team on one codebase: every lab is a bolt run twice &mdash; once with Claude Code, once with GitHub Copilot &mdash; on a Spring Boot prior-auth service and its React provider portal. Includes a leadership track (DORA, SPACE, honest productivity evidence) and an AI-engineering track: skills, subagents, and automated PR review.</p>
           <div class="tags">
-            <span class="tag">19 modules · 7 tracks</span>
-            <span class="tag">analogy-driven · beginner-friendly</span>
-            <span class="tag">6 technologies · 1 story</span>
+            <span class="tag">32 modules &middot; 9 tracks</span>
+            <span class="tag">dual-path: Claude Code + Copilot</span>
+            <span class="tag">Spring Boot service + React portal</span>
           </div>
           <span class="cta">Start the course <span class="arrow">&rarr;</span></span>
         </a>
-        <a class="card-labs" href="https://github.com/varasrinivas/fullstack-course/tree/main/labs" target="_blank" rel="noopener">Hands-on labs <span class="arrow">↗</span></a>
         <details class="modidx">
-          <summary>Jump to a module <span class="cnt">19</span></summary>
+          <summary>Jump to a module <span class="cnt">32</span></summary>
           <div class="modidx-body">
-            <div class="trk"><span class="trk-h">T0 · Foundations</span>
-              <a href="fullstack-course/#m01">M01 · Welcome to the Food Court</a>
-              <a href="fullstack-course/#m02">M02 · Your Toolbelt, Hello Everything</a>
+            <div class="trk"><span class="trk-h">The AI-DLC shift</span>
+              <a href="ai-dlc-sprint-teams/#m01">M01 &middot; From sprints to bolts: the AI-DLC shift</a>
+              <a href="ai-dlc-sprint-teams/#m02">M02 &middot; How your AI collaborator thinks</a>
+              <a href="ai-dlc-sprint-teams/#m03">M03 &middot; One methodology, many tools: Claude Code vs GitHub Copilot</a>
+              <a href="ai-dlc-sprint-teams/#m04">M04 &middot; Setup day: install both, run your first prompt</a>
             </div>
-            <div class="trk"><span class="trk-h">T1 · Angular + single-spa</span>
-              <a href="fullstack-course/#m03">M03 · Angular Hello World</a>
-              <a href="fullstack-course/#m04">M04 · Components, Services &amp; Routing</a>
-              <a href="fullstack-course/#m05">M05 · Why single-spa?</a>
-              <a href="fullstack-course/#m06">M06 · Two Counters, One Floor</a>
+            <div class="trk"><span class="trk-h">The Prior Auth Portal</span>
+              <a href="ai-dlc-sprint-teams/#m05">M05 &middot; Tour of the Prior Auth Portal</a>
+              <a href="ai-dlc-sprint-teams/#m06">M06 &middot; Bolt 0 — Read the codebase with AI</a>
+              <a href="ai-dlc-sprint-teams/#m07">M07 &middot; Persistent context: CLAUDE.md &amp; Copilot instructions</a>
             </div>
-            <div class="trk"><span class="trk-h">T2 · NestJS</span>
-              <a href="fullstack-course/#m07">M07 · NestJS Hello World</a>
-              <a href="fullstack-course/#m08">M08 · Controllers, Providers &amp; Modules</a>
-              <a href="fullstack-course/#m09">M09 · The BFF Pattern</a>
-              <a href="fullstack-course/#m19">M19 · Custom Order Slips (GraphQL)</a>
+            <div class="trk"><span class="trk-h">Everyday developer craft</span>
+              <a href="ai-dlc-sprint-teams/#m08">M08 &middot; In the flow: autocomplete, inline chat &amp; the CLI</a>
+              <a href="ai-dlc-sprint-teams/#m09">M09 &middot; Finding and raising defects with AI</a>
             </div>
-            <div class="trk"><span class="trk-h">T3 · Spring Boot</span>
-              <a href="fullstack-course/#m10">M10 · Spring Boot Hello World</a>
-              <a href="fullstack-course/#m11">M11 · REST, Layers &amp; Data</a>
-              <a href="fullstack-course/#m12">M12 · Two Kitchens, Two Pantries</a>
+            <div class="trk"><span class="trk-h">Construction bolts</span>
+              <a href="ai-dlc-sprint-teams/#m10">M10 &middot; Bolt — The Appeals endpoint, from intent to code</a>
+              <a href="ai-dlc-sprint-teams/#m11">M11 &middot; Bolt — Lock the rules engine with tests</a>
+              <a href="ai-dlc-sprint-teams/#m12">M12 &middot; Bolt — Fix a bug (the units boundary)</a>
+              <a href="ai-dlc-sprint-teams/#m13">M13 &middot; Bolt — Refactor the rules engine into composable rules</a>
+              <a href="ai-dlc-sprint-teams/#m14">M14 &middot; Validation checkpoints: reviewing AI output</a>
             </div>
-            <div class="trk"><span class="trk-h">T4 · Camunda</span>
-              <a href="fullstack-course/#m13">M13 · Drawing the Checklist (BPMN)</a>
-              <a href="fullstack-course/#m14">M14 · The Checklist Comes Alive</a>
+            <div class="trk"><span class="trk-h">Running AI-DLC as a team</span>
+              <a href="ai-dlc-sprint-teams/#m15">M15 &middot; Mob Elaboration: intent into units of work</a>
+              <a href="ai-dlc-sprint-teams/#m16">M16 &middot; Guardrails: security, PHI, and when NOT to use AI</a>
+              <a href="ai-dlc-sprint-teams/#m17">M17 &middot; Planning in bolts: estimation &amp; Definition of Done</a>
+              <a href="ai-dlc-sprint-teams/#m18">M18 &middot; Rolling out AI-DLC: a team adoption playbook</a>
             </div>
-            <div class="trk"><span class="trk-h">T5 · Kafka</span>
-              <a href="fullstack-course/#m15">M15 · The Ticket Rail</a>
-              <a href="fullstack-course/#m16">M16 · Kitchens That Listen</a>
+            <div class="trk"><span class="trk-h">Leading the transformation</span>
+              <a href="ai-dlc-sprint-teams/#m19">M19 &middot; The scoreboard: DORA, SPACE &amp; the AI Capabilities Model</a>
+              <a href="ai-dlc-sprint-teams/#m20">M20 &middot; Engineering the metrics: how bolts move DORA &amp; SPACE</a>
+              <a href="ai-dlc-sprint-teams/#m21">M21 &middot; Proving it: productivity evidence for leadership</a>
             </div>
-            <div class="trk"><span class="trk-h">T6 · Capstone</span>
-              <a href="fullstack-course/#m17">M17 · Order #42, End to End</a>
-              <a href="fullstack-course/#m18">M18 · The Map on the Wall</a>
+            <div class="trk"><span class="trk-h">AI engineering &amp; automation</span>
+              <a href="ai-dlc-sprint-teams/#m22">M22 &middot; Turn a non-AI repo into an AI-ready repo</a>
+              <a href="ai-dlc-sprint-teams/#m23">M23 &middot; Package repeatable work as Claude Skills</a>
+              <a href="ai-dlc-sprint-teams/#m24">M24 &middot; Specialized subagents for your codebase</a>
+              <a href="ai-dlc-sprint-teams/#m25">M25 &middot; Build a code-review agent</a>
+              <a href="ai-dlc-sprint-teams/#m26">M26 &middot; Automated PR review &amp; CI with Claude Code</a>
+              <a href="ai-dlc-sprint-teams/#m27">M27 &middot; MCP, hooks &amp; the rest of the toolbox</a>
             </div>
-          </div>
-        </details>
-      </div>
-
-      <div class="card has-index" style="--c:var(--angular)">
-        <a class="card-main" href="angular-course/">
-          <span class="chip" aria-hidden="true">
-            <svg viewBox="0 0 512 512" fill="none" stroke="#0f0f1a" stroke-width="26" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M256 88 L400 142 L376 348 L256 424 L136 348 L112 142 Z"/>
-              <path d="M256 158 L330 336 M256 158 L182 336 M208 282 L304 282"/>
-            </svg>
-          </span>
-          <h2>Angular Mastery — Beginner to Production</h2>
-          <p>Angular 20 the signals-first way: TypeScript foundations through standalone components, typed forms, SignalStore, and testing — then splitting the app into single-spa micro-frontends, engineering a 5,000-row queue under budget, and shipping it with Docker, CI/CD, and monitoring. Every lab lives in one Prior Auth Portal domain, with guided and Claude-Code paths.</p>
-          <div class="tags">
-            <span class="tag">42 modules · 6 tracks</span>
-            <span class="tag">Angular 20 · signals-first</span>
-            <span class="tag">micro-frontends → production</span>
-          </div>
-          <span class="cta">Start the course <span class="arrow">&rarr;</span></span>
-        </a>
-        <a class="card-labs" href="https://github.com/varasrinivas/angular-course" target="_blank" rel="noopener">Course repo <span class="arrow">↗</span></a>
-        <details class="modidx">
-          <summary>Jump to a module <span class="cnt">42</span></summary>
-          <div class="modidx-body">
-            <div class="trk"><span class="trk-h">T1 · Foundations</span>
-              <a href="angular-course/#1.1">1.1 · TypeScript for Angular Developers</a>
-              <a href="angular-course/#1.2">1.2 · Angular Architecture &amp; the CLI</a>
-              <a href="angular-course/#1.3">1.3 · Components &amp; Templates</a>
-              <a href="angular-course/#1.4">1.4 · Modern Control Flow</a>
-              <a href="angular-course/#1.5">1.5 · Data Binding &amp; Events</a>
-              <a href="angular-course/#1.6">1.6 · Directives &amp; Pipes</a>
-              <a href="angular-course/#1.7">1.7 · Standalone Components</a>
+            <div class="trk"><span class="trk-h">The provider portal (React)</span>
+              <a href="ai-dlc-sprint-teams/#m28">M28 &middot; Tour of the provider portal: React meets the Prior Auth API</a>
+              <a href="ai-dlc-sprint-teams/#m29">M29 &middot; Bolt — The submit form, from intent to UI</a>
+              <a href="ai-dlc-sprint-teams/#m30">M30 &middot; Bolt — File an appeal from the portal</a>
+              <a href="ai-dlc-sprint-teams/#m31">M31 &middot; Bolt — Lock the portal with component tests</a>
             </div>
-            <div class="trk"><span class="trk-h">T2 · Core Angular</span>
-              <a href="angular-course/#2.1">2.1 · Dependency Injection &amp; Services</a>
-              <a href="angular-course/#2.2">2.2 · Routing &amp; Lazy Loading</a>
-              <a href="angular-course/#2.3">2.3 · Typed Reactive Forms</a>
-              <a href="angular-course/#2.4">2.4 · Template-Driven Forms</a>
-              <a href="angular-course/#2.5">2.5 · HttpClient &amp; Interceptors</a>
-              <a href="angular-course/#2.6">2.6 · Signals: signal, computed, effect</a>
-              <a href="angular-course/#2.7">2.7 · RxJS Essentials &amp; Signal Interop</a>
-              <a href="angular-course/#2.8">2.8 · Component Communication Patterns</a>
-            </div>
-            <div class="trk"><span class="trk-h">T3 · Advanced</span>
-              <a href="angular-course/#3.1">3.1 · Advanced RxJS Patterns</a>
-              <a href="angular-course/#3.2">3.2 · SignalStore vs NgRx</a>
-              <a href="angular-course/#3.3">3.3 · Change Detection &amp; Zoneless</a>
-              <a href="angular-course/#3.4">3.4 · Content Projection &amp; Templates</a>
-              <a href="angular-course/#3.5">3.5 · Custom Directives &amp; Host Bindings</a>
-              <a href="angular-course/#3.6">3.6 · Advanced DI: Tokens &amp; Providers</a>
-              <a href="angular-course/#3.7">3.7 · Unit &amp; Component Testing</a>
-              <a href="angular-course/#3.8">3.8 · E2E Testing with Playwright</a>
-              <a href="angular-course/#3.9">3.9 · SSR, Hydration &amp; Deferrable Views</a>
-            </div>
-            <div class="trk"><span class="trk-h">T4 · Micro-frontends</span>
-              <a href="angular-course/#4.1">4.1 · MFE Architecture: When &amp; Why</a>
-              <a href="angular-course/#4.2">4.2 · single-spa Core Concepts</a>
-              <a href="angular-course/#4.3">4.3 · Converting Angular to single-spa</a>
-              <a href="angular-course/#4.4">4.4 · Shared Dependencies &amp; Import Maps</a>
-              <a href="angular-course/#4.5">4.5 · Cross-MFE Communication &amp; State</a>
-              <a href="angular-course/#4.6">4.6 · single-spa vs Module Federation</a>
-            </div>
-            <div class="trk"><span class="trk-h">T5 · Performance</span>
-              <a href="angular-course/#5.1">5.1 · Profiling: DevTools &amp; Chrome</a>
-              <a href="angular-course/#5.2">5.2 · Change Detection Optimization</a>
-              <a href="angular-course/#5.3">5.3 · Bundle Analysis &amp; Budgets</a>
-              <a href="angular-course/#5.4">5.4 · Deferrable Views &amp; Lazy Strategies</a>
-              <a href="angular-course/#5.5">5.5 · Core Web Vitals</a>
-              <a href="angular-course/#5.6">5.6 · Caching &amp; Runtime Performance</a>
-            </div>
-            <div class="trk"><span class="trk-h">T6 · Production</span>
-              <a href="angular-course/#6.1">6.1 · Build Configs &amp; Environments</a>
-              <a href="angular-course/#6.2">6.2 · Docker + nginx</a>
-              <a href="angular-course/#6.3">6.3 · CI/CD Pipelines</a>
-              <a href="angular-course/#6.4">6.4 · Monitoring &amp; Error Tracking</a>
-              <a href="angular-course/#6.5">6.5 · Security: XSS, Sanitization, CSP</a>
-              <a href="angular-course/#6.6">6.6 · i18n, A11y &amp; Upgrade Strategy</a>
-            </div>
-          </div>
-        </details>
-      </div>
-
-      <div class="card has-index" style="--c:var(--nestng)">
-        <a class="card-main" href="nestjs-angular-course/">
-          <span class="chip" aria-hidden="true">
-            <svg viewBox="0 0 512 512" fill="none" stroke="#0f0f1a" stroke-width="26" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M256 88 L420 172 L256 256 L92 172 Z"/>
-              <path d="M92 256 L256 340 L420 256"/>
-              <path d="M92 340 L256 424 L420 340"/>
-            </svg>
-          </span>
-          <h2>Full-Stack TypeScript for Java Developers</h2>
-          <p>NestJS and Angular taught to Java/Spring developers through one analogy universe — the restaurant, the filing cabinet room, airport security, LEGO booklets, and a river with locks — with a Java &rarr; TS bridge table, an animated diagram, and a dual-path lab in every module. All 36 modules build one Prior Auth Portal end to end.</p>
-          <div class="tags">
-            <span class="tag">36 modules · 8 tracks</span>
-            <span class="tag">Java/Spring &rarr; NestJS + Angular</span>
-            <span class="tag">animated · dual-path labs</span>
-          </div>
-          <span class="cta">Start the course <span class="arrow">&rarr;</span></span>
-        </a>
-        <a class="card-labs" href="https://github.com/varasrinivas/nestjs-angular" target="_blank" rel="noopener">Course repo <span class="arrow">↗</span></a>
-        <details class="modidx">
-          <summary>Jump to a module <span class="cnt">36</span></summary>
-          <div class="modidx-body">
-            <div class="trk"><span class="trk-h">A1 · TypeScript Bridge</span>
-              <a href="nestjs-angular-course/#a1-01">01 · Two Cities, Same Language Family</a>
-              <a href="nestjs-angular-course/#a1-02">02 · Types Without a Compiler Cage</a>
-              <a href="nestjs-angular-course/#a1-03">03 · async/await vs Threads</a>
-              <a href="nestjs-angular-course/#a1-04">04 · Decorators &amp; Generics</a>
-            </div>
-            <div class="trk"><span class="trk-h">A2 · NestJS Fundamentals</span>
-              <a href="nestjs-angular-course/#a2-01">01 · Hello Nest: the Restaurant Opens</a>
-              <a href="nestjs-angular-course/#a2-02">02 · Controllers = Waiters</a>
-              <a href="nestjs-angular-course/#a2-03">03 · Providers &amp; DI = the Pantry</a>
-              <a href="nestjs-angular-course/#a2-04">04 · Modules = the Building</a>
-              <a href="nestjs-angular-course/#a2-05">05 · Config &amp; Environments</a>
-            </div>
-            <div class="trk"><span class="trk-h">A3 · Data &amp; Persistence</span>
-              <a href="nestjs-angular-course/#a3-01">01 · Entities = Standard Forms</a>
-              <a href="nestjs-angular-course/#a3-02">02 · Repositories = Filing Clerks</a>
-              <a href="nestjs-angular-course/#a3-03">03 · Validation Pipes = the Luggage Scanner</a>
-              <a href="nestjs-angular-course/#a3-04">04 · Relations &amp; Query Builder</a>
-              <a href="nestjs-angular-course/#a3-05">05 · Migrations = Re-labeling the Cabinets</a>
-            </div>
-            <div class="trk"><span class="trk-h">A4 · Advanced NestJS</span>
-              <a href="nestjs-angular-course/#a4-01">01 · Middleware, Guards, Interceptors, Pipes</a>
-              <a href="nestjs-angular-course/#a4-02">02 · Auth: Boarding Passes</a>
-              <a href="nestjs-angular-course/#a4-03">03 · Exception Filters</a>
-              <a href="nestjs-angular-course/#a4-04">04 · Testing</a>
-              <a href="nestjs-angular-course/#a4-05">05 · OpenAPI, Logging, Health</a>
-            </div>
-            <div class="trk"><span class="trk-h">B1 · Angular Fundamentals</span>
-              <a href="nestjs-angular-course/#b1-01">01 · The Instruction Booklet</a>
-              <a href="nestjs-angular-course/#b1-02">02 · Bindings &amp; Signals</a>
-              <a href="nestjs-angular-course/#b1-03">03 · Control Flow</a>
-              <a href="nestjs-angular-course/#b1-04">04 · Component Communication</a>
-              <a href="nestjs-angular-course/#b1-05">05 · Pipes &amp; Directives</a>
-            </div>
-            <div class="trk"><span class="trk-h">B2 · Data Flow &amp; RxJS</span>
-              <a href="nestjs-angular-course/#b2-01">01 · Services &amp; DI, Again</a>
-              <a href="nestjs-angular-course/#b2-02">02 · The River: Observables</a>
-              <a href="nestjs-angular-course/#b2-03">03 · HttpClient</a>
-              <a href="nestjs-angular-course/#b2-04">04 · Forms</a>
-            </div>
-            <div class="trk"><span class="trk-h">B3 · Routing, State &amp; Structure</span>
-              <a href="nestjs-angular-course/#b3-01">01 · The Mall Directory: Router</a>
-              <a href="nestjs-angular-course/#b3-02">02 · Route Guards</a>
-              <a href="nestjs-angular-course/#b3-03">03 · State with Signals</a>
-              <a href="nestjs-angular-course/#b3-04">04 · Project Structure at Scale</a>
-            </div>
-            <div class="trk"><span class="trk-h">B4 · Capstone: Prior Auth Portal</span>
-              <a href="nestjs-angular-course/#b4-01">01 · Wire It Up</a>
-              <a href="nestjs-angular-course/#b4-02">02 · Auth End to End</a>
-              <a href="nestjs-angular-course/#b4-03">03 · The Determinations Dashboard</a>
-              <a href="nestjs-angular-course/#b4-04">04 · Ship It</a>
+            <div class="trk"><span class="trk-h">What&rsquo;s next</span>
+              <a href="ai-dlc-sprint-teams/#m32">M32 &middot; Extend the Portal: a second service &amp; beyond</a>
             </div>
           </div>
         </details>
