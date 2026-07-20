@@ -28,5 +28,6 @@ bucket-root object:
 ```bash
 aws s3 cp index.html s3://learnings.varasrinivas.com/index.html \
   --content-type "text/html; charset=utf-8" --cache-control "public, max-age=300"
-aws cloudfront create-invalidation --distribution-id ESC8HMAS41DRF --paths "/*"
+# MSYS_NO_PATHCONV=1 stops Git Bash from rewriting "/*" into a Windows path
+MSYS_NO_PATHCONV=1 aws cloudfront create-invalidation --distribution-id ESC8HMAS41DRF --paths "/*"
 ```
