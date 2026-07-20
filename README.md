@@ -16,6 +16,7 @@ courses, responsive, and accessible (honors `prefers-reduced-motion`).
 | AI-DLC for Sprint Teams — Prior Auth Portal | [`/ai-dlc-sprint-teams/`](https://learnings.varasrinivas.com/ai-dlc-sprint-teams/) | — (local: `ai-dlc-sprint-teams`) |
 | Data Engineering with PySpark | [`/data-engineering-course/`](https://learnings.varasrinivas.com/data-engineering-course/) | [data-engineering-course](https://github.com/varasrinivas/data-engineering-course) |
 | Data Engineering Core — Interview-Ready | [`/data-engineering-fundamentals/`](https://learnings.varasrinivas.com/data-engineering-fundamentals/) | [data-engineering-fundamentals-course](https://github.com/varasrinivas/data-engineering-fundamentals-course) |
+| The 10x Toolkit — Claude Code, Copilot & Cursor | [`/the-full-ai-course/`](https://learnings.varasrinivas.com/the-full-ai-course/) | [the-full-ai-tools-course](https://github.com/varasrinivas/the-full-ai-tools-course) |
 
 ## Adding a course
 Each course lives under its own top-level folder in the site bucket. To list a new one, add a `<a class="card">`
