@@ -14,6 +14,7 @@ courses, responsive, and accessible (honors `prefers-reduced-motion`).
 | Spring Boot & Microservices | [`/spring-boot-course/`](https://learnings.varasrinivas.com/spring-boot-course/) | [spring-boot-course](https://github.com/varasrinivas/spring-boot-course) |
 | AWS AI-DLC — Method, Engines & Leadership | [`/ai-dlc-course/`](https://learnings.varasrinivas.com/ai-dlc-course/) | [ai-dlc-course](https://github.com/varasrinivas/ai-dlc-course) |
 | AI-DLC for Sprint Teams — Prior Auth Portal | [`/ai-dlc-sprint-teams/`](https://learnings.varasrinivas.com/ai-dlc-sprint-teams/) | [ai-dlc-sprint-teams](https://github.com/varasrinivas/ai-dlc-sprint-teams) |
+| AI-DLC in Practice — The 76-Day Mandate | [`/ai-dlc-practical/`](https://learnings.varasrinivas.com/ai-dlc-practical/) | [ai-dlc-practical](https://github.com/varasrinivas/ai-dlc-practical) (companion lab repo) |
 | Data Engineering with PySpark | [`/data-engineering-course/`](https://learnings.varasrinivas.com/data-engineering-course/) | [data-engineering-course](https://github.com/varasrinivas/data-engineering-course) |
 | Data Engineering Core — Interview-Ready | [`/data-engineering-fundamentals/`](https://learnings.varasrinivas.com/data-engineering-fundamentals/) | [data-engineering-fundamentals-course](https://github.com/varasrinivas/data-engineering-fundamentals-course) |
 | The 10x Toolkit — Claude Code, Copilot & Cursor | [`/the-full-ai-course/`](https://learnings.varasrinivas.com/the-full-ai-course/) | [the-full-ai-tools-course](https://github.com/varasrinivas/the-full-ai-tools-course) |
