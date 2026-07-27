@@ -40,6 +40,10 @@ verifies the deployed ETag against the local checksum, and invalidates `/` and `
 Add `--strict` to turn the git warnings into a refusal. `--skip-linkcheck` skips the per-link S3 lookups
 when you just want the markup checked. Overrides: `--bucket`, `--key`, `--distribution`.
 
+**Deploys are run locally, never from GitHub Actions.** Automating this would mean putting AWS credentials
+for the site's account into repository secrets — not worth the convenience. Run `python deploy.py` from a
+machine that already has the credentials.
+
 Doing it by hand instead:
 ```bash
 aws s3 cp index.html s3://learnings.varasrinivas.com/index.html \
