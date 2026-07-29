@@ -15,7 +15,7 @@
   --bg-primary:#0f0f1a; --bg-surface:#1a1a2e; --bg-elevated:#242442;
   --text-primary:#e8e8e8; --text-secondary:#a0a0b8; --text-muted:#6b6b80;
   --accent-cyan:#00d4ff; --accent-purple:#b088f9; --accent-emerald:#06d6a0;
-  --java:#ffb627; --python:#4584b6; --spring:#6db33f; --aidlc:#ff9900; --de:#e25a1c; --decore:#17a58c; --sprint:#e2cf9f; --tenx:#f5b84b; --mandate:#cf7d45;
+  --java:#ffb627; --python:#4584b6; --spring:#6db33f; --aidlc:#ff9900; --de:#e25a1c; --decore:#17a58c; --sprint:#e2cf9f; --tenx:#f5b84b; --mandate:#cf7d45; --manybolts:#7f8cf5; --sbmig:#6ea8ff;
   --font-display:'Fraunces',serif; --font-body:'Inter',sans-serif; --font-code:'JetBrains Mono',monospace;
   --radius:14px; --transition:400ms ease-out;
 }
@@ -250,6 +250,20 @@ footer a:hover{color:var(--accent-cyan)}
         </details>
       </div>
 
+      <div class="card" style="--c:var(--sbmig)">
+        <a class="card-main" href="spring-boot-4-migration-guide/">
+          <span class="chip" aria-hidden="true">3&rarr;4</span>
+          <h2>Migrating Spring Boot 3.x &rarr; 4.0 with Claude Code</h2>
+          <p>A phase-by-phase playbook for the Boot 3&rarr;4 upgrade run with Claude Code — why this migration is different (Jackson 3, Security 7, Batch 6, starter renames), pre-migration setup, the migration loop with subagents and skills, model and context strategy, scaling across many services, and the guardrails on what not to delegate. Every claim audited against the official Spring migration guides, with a verified addendum of the gotchas the official docs only whisper.</p>
+          <div class="tags">
+            <span class="tag">11 sheets · engineering-drawing style</span>
+            <span class="tag">Boot 4.1 · Framework 7 · Security 7</span>
+            <span class="tag">verified July 2026</span>
+          </div>
+          <span class="cta">Read the guide <span class="arrow">&rarr;</span></span>
+        </a>
+      </div>
+
       <div class="card has-index" style="--c:var(--aidlc)">
         <a class="card-main" href="ai-dlc-course/">
           <span class="chip" aria-hidden="true">
@@ -476,6 +490,28 @@ footer a:hover{color:var(--accent-cyan)}
             </div>
           </div>
         </details>
+      </div>
+
+      <div class="card" style="--c:var(--manybolts)">
+        <a class="card-main" href="ai-dlc-many-bolts/">
+          <span class="chip" aria-hidden="true">
+            <svg viewBox="0 0 512 512" fill="none" stroke="#0f0f1a" stroke-width="26" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M88 144 L240 256"/>
+              <path d="M88 256 L240 256"/>
+              <path d="M88 368 L240 256"/>
+              <path d="M240 256 L424 256"/>
+              <circle cx="240" cy="256" r="20" fill="#0f0f1a" stroke="none"/>
+            </svg>
+          </span>
+          <h2>Many Bolts, One Codebase &mdash; AI-DLC beyond the pilot team</h2>
+          <p>What breaks when the second mob, and the fifth, run bolts against the same platform. A validation bottleneck is a shared resource, so AI-DLC stops being a method and becomes a queueing problem: one clinical SME, one CI pipeline, one shared rules library consumed by all and owned by none. Three repos, twelve planted defects, and a six-round capstone quarter scored on more than throughput. Marked honest-limit sections state plainly where the published method has no answer.</p>
+          <div class="tags">
+            <span class="tag">22 modules &middot; 6 tracks</span>
+            <span class="tag">dual-path: Claude Code &middot; GitHub Copilot</span>
+            <span class="tag">three-repo fixture &middot; PD-1&hellip;PD-12</span>
+          </div>
+          <span class="cta">Start the course <span class="arrow">&rarr;</span></span>
+        </a>
       </div>
 
       <div class="card has-index" style="--c:var(--de)">
