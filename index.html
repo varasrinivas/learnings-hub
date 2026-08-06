@@ -15,7 +15,7 @@
   --bg-primary:#0f0f1a; --bg-surface:#1a1a2e; --bg-elevated:#242442;
   --text-primary:#e8e8e8; --text-secondary:#a0a0b8; --text-muted:#6b6b80;
   --accent-cyan:#00d4ff; --accent-purple:#b088f9; --accent-emerald:#06d6a0;
-  --java:#ffb627; --python:#4584b6; --spring:#6db33f; --aidlc:#ff9900; --de:#e25a1c; --decore:#17a58c; --sprint:#e2cf9f; --tenx:#f5b84b; --mandate:#cf7d45; --manybolts:#7f8cf5; --sbmig:#6ea8ff; --sbmigx:#22d3ee;
+  --java:#ffb627; --python:#4584b6; --spring:#6db33f; --aidlc:#ff9900; --de:#e25a1c; --decore:#17a58c; --sprint:#e2cf9f; --tenx:#f5b84b; --mandate:#cf7d45; --manybolts:#7f8cf5; --sbmig:#6ea8ff; --sbmigx:#22d3ee; --sbmigc:#a78bfa;
   --font-display:'Fraunces',serif; --font-body:'Inter',sans-serif; --font-code:'JetBrains Mono',monospace;
   --radius:14px; --transition:400ms ease-out;
 }
@@ -254,9 +254,9 @@ footer a:hover{color:var(--accent-cyan)}
         <a class="card-main" href="spring-boot-4-migration-guide/">
           <span class="chip" aria-hidden="true">3&rarr;4</span>
           <h2>Migrating Spring Boot 3.x &rarr; 4.0 with Claude Code</h2>
-          <p>A phase-by-phase playbook for the Boot 3&rarr;4 upgrade run with Claude Code — why this migration is different (Jackson 3, Security 7, Batch 6, starter renames), pre-migration setup, the migration loop with subagents and skills, and full automation of the flow: phase commands, an orchestrator skill, and a boot4-kit shipped to a whole fleet as a plugin or by plain-git vendoring — plus a step-by-step runbook that ships inside the kit, distilled from an end-to-end field run of all eight phases on a real service. Plus animated diagrams, hands-on Spec Kit and AWS AI-DLC sheets with a combined workflow, model and context strategy, and the guardrails on what not to delegate. Every claim audited against official sources, with verified addenda of the gotchas the docs only whisper.</p>
+          <p>A phase-by-phase playbook for the Boot 3&rarr;4 upgrade run with Claude Code — why this migration is different (Jackson 3, Security 7, Batch 6, starter renames), pre-migration setup, the migration loop with subagents and skills, and full automation of the flow: phase commands, an orchestrator skill, and a boot4-kit shipped to a whole fleet as a plugin or by plain-git vendoring — plus an operator's cheat sheet (every piece, when to dispatch a subagent, and the exact dispatch prompts), a step-by-step runbook that ships inside the kit, distilled from an end-to-end field run of all eight phases on a real service, and a sheet on reusing the kit under Codex and Copilot. Plus animated diagrams, hands-on Spec Kit and AWS AI-DLC sheets with a combined workflow, model and context strategy, and the guardrails on what not to delegate. Every claim audited against official sources, with verified addenda of the gotchas the docs only whisper.</p>
           <div class="tags">
-            <span class="tag">17 sheets · engineering-drawing style</span>
+            <span class="tag">18 sheets · engineering-drawing style</span>
             <span class="tag">Boot 4.1 · Framework 7 · Security 7</span>
             <span class="tag">orientation · packaging · GitHub Actions</span>
             <span class="tag">verified August 2026</span>
@@ -269,11 +269,26 @@ footer a:hover{color:var(--accent-cyan)}
         <a class="card-main" href="spring-boot-4-migration-guide-codex/">
           <span class="chip" aria-hidden="true">3&rarr;4</span>
           <h2>Migrating Spring Boot 3.x &rarr; 4.0 with OpenAI Codex</h2>
-          <p>The same Boot 3&rarr;4 playbook, rebuilt for the Codex CLI: <code>AGENTS.md</code> as the charter, sandbox and approval policy as two separate dials, TOML subagents, <code>$</code>-invoked skills, lifecycle hooks, and <code>codex exec</code> for CI. Includes a Claude Code &harr; Codex crosswalk that maps every concept across and is honest about the four places the two tools genuinely diverge — no prompt templating in skills, no per-skill tool list, stricter hook feedback channels, and a younger distribution story. Spring Boot facts shared with the Claude Code edition and audited against the same primary sources — including the field-proven runbook the kit now ships.</p>
+          <p>The same Boot 3&rarr;4 playbook, rebuilt for the Codex CLI: <code>AGENTS.md</code> as the charter, sandbox and approval policy as two separate dials, TOML subagents, <code>$</code>-invoked skills, lifecycle hooks, and <code>codex exec</code> for CI. Includes a Claude Code &harr; Codex crosswalk that maps every concept across and is honest about the four places the two tools genuinely diverge — no prompt templating in skills, no per-skill tool list, stricter hook feedback channels, and a younger distribution story — plus an operator's cheat sheet with the subagent dispatch recipes, and a sheet on reusing this kit under Claude Code and Copilot, its skills proving the most portable of the three. Spring Boot facts shared with the Claude Code edition and audited against the same primary sources — including the field-proven runbook the kit now ships.</p>
           <div class="tags">
-            <span class="tag">18 sheets · engineering-drawing style</span>
+            <span class="tag">19 sheets · engineering-drawing style</span>
             <span class="tag">Boot 4.1 · Framework 7 · Security 7</span>
             <span class="tag">orientation · crosswalk · GitHub Actions</span>
+            <span class="tag">verified August 2026</span>
+          </div>
+          <span class="cta">Read the guide <span class="arrow">&rarr;</span></span>
+        </a>
+      </div>
+
+      <div class="card" style="--c:var(--sbmigc)">
+        <a class="card-main" href="spring-boot-4-migration-guide-copilot/">
+          <span class="chip" aria-hidden="true">3&rarr;4</span>
+          <h2>Migrating Spring Boot 3.x &rarr; 4.0 with GitHub Copilot</h2>
+          <p>The same Boot 3&rarr;4 playbook, rebuilt for the Copilot CLI: <code>AGENTS.md</code> as the charter, per-tool allow/deny grants instead of a config file, <code>.agent.md</code> custom agents whose <code>tools:</code> list is the safety property, slash-invoked skills, <code>.github/hooks/</code> lifecycle hooks, and <code>copilot -p</code> for CI — everything landing in the <code>.github/</code> layer your workflows already live in. Includes a Claude Code / Codex &rarr; Copilot crosswalk, an operator's cheat sheet with the subagent dispatch recipes, and a sheet on reusing kits built for the sibling agents — the only one in the family whose reuse claims were <em>executed</em> against a live CLI, findings and contradictions recorded. Spring Boot facts shared with both sibling editions and audited against the same primary sources.</p>
+          <div class="tags">
+            <span class="tag">19 sheets · engineering-drawing style</span>
+            <span class="tag">Boot 4.1 · Framework 7 · Security 7</span>
+            <span class="tag">crosswalk · kit reuse · GitHub Actions</span>
             <span class="tag">verified August 2026</span>
           </div>
           <span class="cta">Read the guide <span class="arrow">&rarr;</span></span>
