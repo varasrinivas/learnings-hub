@@ -3,6 +3,14 @@
 The landing page for **[learnings.varasrinivas.com](https://learnings.varasrinivas.com/)** — a single
 page that collates the available courses as cards and links into each one.
 
+Also home to **`agenticai/index.html`** — the canonical source of the
+[agenticai.varasrinivas.com](https://agenticai.varasrinivas.com/) landing page (bucket-root object of
+the `agenticai.varasrinivas.com` S3 bucket, CloudFront `E204WFPQTUDQ3Q`). It groups the 13 AI-agent
+courses into five tracks, shows a suggested learning path, and prints each course's site path on its
+card. Deploy by hand: `aws s3 cp agenticai/index.html s3://agenticai.varasrinivas.com/index.html
+--content-type "text/html; charset=utf-8" --cache-control "public, max-age=300"` then invalidate
+`/` and `/index.html` on `E204WFPQTUDQ3Q` (use `MSYS_NO_PATHCONV=1` under Git Bash).
+
 A standalone `index.html`: no build step, no dependencies (web fonts only), dark theme matching the
 courses, responsive, and accessible (honors `prefers-reduced-motion`).
 

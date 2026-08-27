@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Agent Development — Course Catalog</title>
+  <meta name="description" content="Thirteen focused courses on building AI agents — Claude, Gemini, OpenAI, MCP, open-source models, LLMOps, context engineering, knowledge graphs, and AI platform engineering — grouped into five tracks with a suggested learning path.">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg-primary: #0A1628; --bg-secondary: #111D33; --bg-card: #162033; --bg-surface: #1A2740;
+      --text-primary: #E8ECF1; --text-secondary: #94A3B8; --text-muted: #64748B;
+      --accent: #D4A843; --accent-hover: #E5BC5A; --accent-muted: rgba(212,168,67,0.12);
+      --border: #21262D;
+      --claude:    #D4A843;
+      --llmops:    #EF4444;
+      --ctxeng:    #14B8A6;
+      --platform:  #6366F1;
+      --cc:        #A855F7;
+      --mcp:       #06B6D4;
+      --gemini:    #4285F4;
+      --gca:       #8B5CF6;
+      --opensource:#10B981;
+      --compare:   #F97316;
+      --kg: #8B5CF6; --uce: #2e6b8a; --multisdk:  #EC4899;
+    }
+    body {
+      background: var(--bg-primary); color: var(--text-primary);
+      font-family: 'Source Sans 3', sans-serif; font-size: 1rem; line-height: 1.7;
+      min-height: 100vh;
+    }
+    h1, h2, h3 { font-family: 'Bricolage Grotesque', sans-serif; line-height: 1.2; }
+
+    /* ── Hero ── */
+    .hero {
+      text-align: center; padding: 5rem 2rem 3.5rem;
+      background: radial-gradient(ellipse at 50% 0%, rgba(212,168,67,0.07) 0%, transparent 65%);
+    }
+    .hero-badge {
+      display: inline-block; padding: 0.35rem 1rem; border-radius: 99px;
+      background: var(--accent-muted); color: var(--accent);
+      font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 600;
+      margin-bottom: 1.5rem; letter-spacing: 0.06em;
+    }
+    .hero h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 1rem; }
+    .hero h1 span { color: var(--accent); }
+    .hero p { color: var(--text-secondary); font-size: 1.1rem; max-width: 640px; margin: 0 auto 0.5rem; }
+
+    /* ── Stats row ── */
+    .stats {
+      display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap;
+      padding: 1.5rem 2rem 2.5rem; max-width: 700px; margin: 0 auto;
+    }
+    .stat { text-align: center; }
+    .stat .n { font-family: 'Bricolage Grotesque', sans-serif; font-size: 2rem; font-weight: 800; color: var(--accent); }
+    .stat .l { font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+
+    /* ── Suggested learning path ── */
+    .route {
+      margin: 0 0 3rem; padding: 1.4rem 1.75rem;
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px;
+    }
+    .route-wrap { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    .route-title {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 600;
+      color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.9rem;
+    }
+    .route-flow { display: flex; flex-wrap: wrap; gap: 0.6rem 0.4rem; align-items: stretch; }
+    .route-step {
+      flex: 1 1 200px; background: var(--bg-surface); border: 1px solid var(--border);
+      border-radius: 10px; padding: 0.7rem 0.9rem;
+    }
+    .route-step .rs-n {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 600;
+      color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    .route-step .rs-t { font-weight: 600; font-size: 0.92rem; margin-top: 0.1rem; }
+    .route-step .rs-d { font-size: 0.8rem; color: var(--text-muted); line-height: 1.45; margin-top: 0.15rem; }
+    .route-arrow { align-self: center; color: var(--accent); font-size: 1.1rem; flex: 0 0 auto; }
+    @media (max-width: 760px) { .route-arrow { display: none; } }
+
+    /* ── Group header (section label + path) ── */
+    .group-label {
+      max-width: 1100px; margin: 0 auto; padding: 0 2rem 0.9rem;
+      display: flex; justify-content: space-between; align-items: baseline;
+      gap: 0.5rem 2rem; flex-wrap: wrap;
+      border-bottom: 1px solid var(--border); margin-bottom: 1.75rem;
+    }
+    .g-title {
+      font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.2rem; font-weight: 700;
+    }
+    .g-title .g-kicker {
+      display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem;
+      font-weight: 600; color: var(--text-muted); text-transform: uppercase;
+      letter-spacing: 0.1em; margin-bottom: 0.15rem;
+    }
+    .g-path {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.74rem; color: var(--text-muted);
+    }
+    .g-path b { color: var(--text-secondary); font-weight: 600; }
+    .g-path .arr { color: var(--accent); padding: 0 0.15rem; }
+
+    /* ── Course grid ── */
+    .course-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.25rem; max-width: 1100px; margin: 0 auto; padding: 0 2rem 4rem;
+    }
+    .course-card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px;
+      padding: 1.75rem; text-decoration: none; color: inherit;
+      display: flex; flex-direction: column; gap: 0.75rem;
+      transition: transform 200ms, border-color 200ms, box-shadow 200ms;
+      position: relative; overflow: hidden;
+    }
+    .course-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--card-color); opacity: 0.7; transition: opacity 200ms;
+    }
+    .course-card:hover { transform: translateY(-3px); border-color: var(--card-color); box-shadow: 0 10px 30px rgba(0,0,0,0.35); }
+    .course-card:hover::before { opacity: 1; }
+
+    .card-step {
+      position: absolute; top: 1rem; right: 1.25rem;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 600;
+      color: var(--card-color); border: 1px solid color-mix(in srgb, var(--card-color) 45%, transparent);
+      border-radius: 99px; padding: 0.12rem 0.6rem;
+      background: color-mix(in srgb, var(--card-color) 10%, transparent);
+    }
+    .card-icon {
+      width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center;
+      justify-content: center; font-size: 1.4rem;
+      background: color-mix(in srgb, var(--card-color) 15%, transparent);
+      border: 1px solid color-mix(in srgb, var(--card-color) 30%, transparent);
+    }
+    .card-tag {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 600;
+      color: var(--card-color); text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    .card-title { font-size: 1.2rem; font-weight: 700; }
+    .card-desc { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.55; flex: 1; }
+    .card-meta {
+      display: flex; gap: 1rem; font-size: 0.8rem; color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace; margin-top: 0.25rem;
+      padding-top: 0.75rem; border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .card-path { width: 100%; font-size: 0.72rem; color: var(--text-muted); opacity: 0.75; }
+
+    /* ── Companion card (smaller, secondary) ── */
+    .secondary-grid {
+      max-width: 1100px; margin: 0 auto; padding: 0 2rem 4rem;
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem;
+    }
+    .secondary-card {
+      background: var(--bg-surface); border: 1px solid var(--border); border-radius: 10px;
+      padding: 1.25rem 1.5rem; text-decoration: none; color: inherit;
+      display: flex; align-items: center; gap: 1rem;
+      transition: border-color 200ms, background 200ms;
+    }
+    .secondary-card:hover { border-color: var(--accent); background: var(--bg-card); }
+    .secondary-card .sc-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .secondary-card .sc-title { font-weight: 700; font-size: 0.95rem; }
+    .secondary-card .sc-desc { font-size: 0.82rem; color: var(--text-muted); margin-top: 0.15rem; }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.82rem;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 2rem; }
+      .course-grid { grid-template-columns: 1fr; }
+      .stats { gap: 1.5rem; }
+      .group-label { flex-direction: column; align-items: flex-start; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .course-card, .secondary-card { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════ HERO ════════════════════════ -->
+<header class="hero">
+  <div class="hero-badge">AI AGENT DEVELOPMENT · COURSE CATALOG</div>
+  <h1>Build <span>AI Agents</span> That Ship</h1>
+  <p>Thirteen focused courses covering Claude, Gemini, OpenAI, MCP, open-source models, LLMOps, context engineering, and knowledge graphs — grouped into five tracks, from first prompt to production deployment.</p>
+</header>
+
+<div class="stats">
+  <div class="stat"><div class="n">13</div><div class="l">Courses</div></div>
+  <div class="stat"><div class="n">5</div><div class="l">Tracks</div></div>
+  <div class="stat"><div class="n">250+</div><div class="l">Modules</div></div>
+  <div class="stat"><div class="n">200+</div><div class="l">Capstone Labs</div></div>
+</div>
+
+<!-- ════════════════════════ SUGGESTED LEARNING PATH ════════════════════════ -->
+<div class="route-wrap">
+  <div class="route">
+    <div class="route-title">Suggested learning path</div>
+    <div class="route-flow">
+      <div class="route-step">
+        <div class="rs-n">1 · Foundations</div>
+        <div class="rs-t">Context Engineering</div>
+        <div class="rs-d">The skill under every reliable agent — start here.</div>
+      </div>
+      <div class="route-arrow">→</div>
+      <div class="route-step">
+        <div class="rs-n">2 · Build</div>
+        <div class="rs-t">AI Agents with Claude</div>
+        <div class="rs-d">The flagship — or Mistral &amp; Ollama / Gemini if that's your stack.</div>
+      </div>
+      <div class="route-arrow">→</div>
+      <div class="route-step">
+        <div class="rs-n">3 · Specialize</div>
+        <div class="rs-t">MCP · Knowledge Graphs · Ultimate Context Engineering</div>
+        <div class="rs-d">Deepen the layers your agents depend on.</div>
+      </div>
+      <div class="route-arrow">→</div>
+      <div class="route-step">
+        <div class="rs-n">4 · Operate</div>
+        <div class="rs-t">LLMOps · AI Platform Engineering</div>
+        <div class="rs-d">Keep it reliable, observable, and governed after launch.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════ GROUP 1 · AGENTS WITH CLAUDE ════════════════════════ -->
+<div class="group-label">
+  <div class="g-title"><span class="g-kicker">Track 1</span>🤖 Agents with Claude</div>
+  <div class="g-path">Path: <b>AI Agents with Claude</b><span class="arr">→</span><b>Claude Code Mastery</b><span class="arr">→</span><b>MCP</b></div>
+</div>
+
+<div class="course-grid">
+
+  <a href="courses/claude-agents/index.html" class="course-card" style="--card-color: var(--claude)">
+    <div class="card-step">Step 1</div>
+    <div class="card-icon">🤖</div>
+    <div class="card-tag">Flagship Course</div>
+    <div class="card-title">Building AI Agents with Claude</div>
+    <div class="card-desc">Full agent lifecycle — design, build, protect, observe, deploy. 9 tracks from LLM fundamentals through multi-agent production systems. Includes certification prep for Claude Certified Architect.</div>
+    <div class="card-meta">
+      <span>33 modules</span>
+      <span>9 tracks</span>
+      <span>19 capstone labs</span>
+      <span>Python + TypeScript</span>
+      <span class="card-path">/courses/claude-agents/</span>
+    </div>
+  </a>
+
+  <a href="courses/cc/index.html" class="course-card" style="--card-color: var(--cc)">
+    <div class="card-step">Step 2</div>
+    <div class="card-icon">⚡</div>
+    <div class="card-tag">Direct Track</div>
+    <div class="card-title">Claude Code Mastery</div>
+    <div class="card-desc">Deep-dive into Claude Code — API essentials, prompt engineering, CLAUDE.md, permissions, subagents, hooks, tool use, MCP, and the Agent SDK. Fast path for engineers already comfortable with LLMs.</div>
+    <div class="card-meta">
+      <span>16 modules</span>
+      <span>1 capstone</span>
+      <span>Intermediate–Advanced</span>
+      <span class="card-path">/courses/cc/</span>
+    </div>
+  </a>
+
+  <a href="courses/mcp/index.html" class="course-card" style="--card-color: var(--mcp)">
+    <div class="card-step">Step 3</div>
+    <div class="card-icon">🔌</div>
+    <div class="card-tag">Protocol Deep Dive</div>
+    <div class="card-title">MCP — Model Context Protocol</div>
+    <div class="card-desc">Build, secure, and orchestrate MCP servers from scratch. Covers resources, prompts, HTTP/SSE transport, multi-server orchestration, and production patterns for Claude Code and IDE integrations.</div>
+    <div class="card-meta">
+      <span>9 modules</span>
+      <span>1 capstone</span>
+      <span>Intermediate</span>
+      <span class="card-path">/courses/mcp/</span>
+    </div>
+  </a>
+
+</div>
+
+<!-- ════════════════════════ GROUP 2 · CONTEXT ENGINEERING & KNOWLEDGE ════════════════════════ -->
+<div class="group-label">
+  <div class="g-title"><span class="g-kicker">Track 2</span>🧠 Context Engineering &amp; Knowledge</div>
+  <div class="g-path">Path: <b>Context Engineering</b><span class="arr">→</span><b>Knowledge Graphs</b><span class="arr">→</span><b>Ultimate Context Engineering</b></div>
+</div>
+
+<div class="course-grid">
+
+  <a href="courses/context-engineering/index.html" class="course-card" style="--card-color: var(--ctxeng)">
+    <div class="card-step">Step 1</div>
+    <div class="card-icon">🧠</div>
+    <div class="card-tag">Foundational Pillar</div>
+    <div class="card-title">Context Engineering</div>
+    <div class="card-desc">Master the LLM context window end to end — design, assembly, retrieval, compression, optimization, and governance of everything you feed a model. The skill under every reliable agent.</div>
+    <div class="card-meta">
+      <span>32 modules</span>
+      <span>8 tracks</span>
+      <span>64 capstones</span>
+      <span>Foundational–Advanced</span>
+      <span class="card-path">/courses/context-engineering/</span>
+    </div>
+  </a>
+
+  <a href="courses/knowledge-graph/index.html" class="course-card" style="--card-color: var(--kg)">
+    <div class="card-step">Step 2</div>
+    <div class="card-icon">🕸️</div>
+    <div class="card-tag">New · Applied Pillar</div>
+    <div class="card-title">Knowledge Graphs for AI Agents</div>
+    <div class="card-desc">From RAG limits to self-updating codebase brains — structural graphs (tree-sitter, Graphify), Google's Open Knowledge Format, MCP serving, and honest multi-arm token benchmarks measured on real repositories.</div>
+    <div class="card-meta">
+      <span>14 modules</span>
+      <span>6 tracks</span>
+      <span>2 capstones</span>
+      <span>Intermediate–Advanced</span>
+      <span class="card-path">/courses/knowledge-graph/</span>
+    </div>
+  </a>
+
+  <a href="courses/ultimate-context-eng/index.html" class="course-card" style="--card-color: var(--uce)">
+    <div class="card-step">Step 3</div>
+    <div class="card-icon">🧾</div>
+    <div class="card-tag">New · Synthesis Course</div>
+    <div class="card-title">Ultimate Context Engineering</div>
+    <div class="card-desc">Master the discipline on an app that shows its tokens — MedFlow Copilot's Token Lens itemizes every AI call by layer, cost, and correctness. Ten strategies, thirty labs, and one law: savings only count when the answer is right.</div>
+    <div class="card-meta">
+      <span>15 modules</span>
+      <span>5 tracks</span>
+      <span>30 labs</span>
+      <span>All levels</span>
+      <span class="card-path">/courses/ultimate-context-eng/</span>
+    </div>
+  </a>
+
+</div>
+
+<!-- ════════════════════════ GROUP 3 · GOOGLE AI ════════════════════════ -->
+<div class="group-label">
+  <div class="g-title"><span class="g-kicker">Track 3</span>✨ Google AI</div>
+  <div class="g-path">Path: <b>Gemini Code Assist</b><span class="arr">→</span><b>Building with Gemini CLI</b></div>
+</div>
+
+<div class="course-grid">
+
+  <a href="courses/gemini-code-assist/index.html" class="course-card" style="--card-color: var(--gca)">
+    <div class="card-step">Step 1</div>
+    <div class="card-icon">🧩</div>
+    <div class="card-tag">Google AI · IDE</div>
+    <div class="card-title">Gemini Code Assist</div>
+    <div class="card-desc">Beginner-friendly track for Google's AI pair programmer in VS Code and JetBrains — completion, chat, GEMINI.md context, agent mode, MCP, Gemini CLI, GitHub PR reviews, Cloud Run deployment, and enterprise controls.</div>
+    <div class="card-meta">
+      <span>12 modules</span>
+      <span>5 capstones</span>
+      <span>Beginner</span>
+      <span class="card-path">/courses/gemini-code-assist/</span>
+    </div>
+  </a>
+
+  <a href="courses/gemini-cli/index.html" class="course-card" style="--card-color: var(--gemini)">
+    <div class="card-step">Step 2</div>
+    <div class="card-icon">✨</div>
+    <div class="card-tag">Google AI</div>
+    <div class="card-title">Building with Gemini CLI</div>
+    <div class="card-desc">End-to-end track for Gemini CLI — prompting, GEMINI.md, skill files, plan mode, requirements, design, implementation, testing, deployment, MCP servers, extensions, GitHub Actions, and Google Cloud MCP.</div>
+    <div class="card-meta">
+      <span>17 modules</span>
+      <span>1 capstone</span>
+      <span>Beginner–Intermediate</span>
+      <span class="card-path">/courses/gemini-cli/</span>
+    </div>
+  </a>
+
+</div>
+
+<!-- ════════════════════════ GROUP 4 · OPEN SOURCE & CROSS-PROVIDER ════════════════════════ -->
+<div class="group-label">
+  <div class="g-title"><span class="g-kicker">Track 4</span>🦙 Open Source &amp; Cross-Provider</div>
+  <div class="g-path">Take in any order — each stands alone</div>
+</div>
+
+<div class="course-grid">
+
+  <a href="courses/opensource/index.html" class="course-card" style="--card-color: var(--opensource)">
+    <div class="card-icon">🦙</div>
+    <div class="card-tag">Open Source</div>
+    <div class="card-title">AI Agents with Mistral &amp; Ollama</div>
+    <div class="card-desc">Build production agents using open-source models. Covers the full agent stack — RAG, memory, multi-agent systems, guardrails, observability, deployment, and cost optimization — without vendor lock-in.</div>
+    <div class="card-meta">
+      <span>24 modules</span>
+      <span>1 capstone</span>
+      <span>Intermediate</span>
+      <span class="card-path">/courses/opensource/</span>
+    </div>
+  </a>
+
+  <a href="courses/multi-sdk-agents/index.html" class="course-card" style="--card-color: var(--multisdk)">
+    <div class="card-icon">🔀</div>
+    <div class="card-tag">Cross-SDK</div>
+    <div class="card-title">One Agent, Three SDKs</div>
+    <div class="card-desc">Build the same AI agent three ways — in the Anthropic (Claude), Google (Gemini), and OpenAI SDKs, side by side. Tool use, structured output, memory, RAG, multi-agent, and production, each mapped across all three so switching providers is a config change, not a rewrite.</div>
+    <div class="card-meta">
+      <span>8 modules</span>
+      <span>Python + TypeScript</span>
+      <span>Beginner–Advanced</span>
+      <span class="card-path">/courses/multi-sdk-agents/</span>
+    </div>
+  </a>
+
+  <a href="courses/ai-cli-comparison/index.html" class="course-card" style="--card-color: var(--compare)">
+    <div class="card-icon">⚖️</div>
+    <div class="card-tag">Comparison</div>
+    <div class="card-title">AI CLI Tools Compared</div>
+    <div class="card-desc">Side-by-side analysis of Claude Code vs Gemini CLI vs GitHub Copilot. Covers setup, prompting, code generation, file ops, agentic workflows, MCP, CI/CD, cost, and how to pick the right stack.</div>
+    <div class="card-meta">
+      <span>10 modules</span>
+      <span>1 capstone</span>
+      <span>All levels</span>
+      <span class="card-path">/courses/ai-cli-comparison/</span>
+    </div>
+  </a>
+
+</div>
+
+<!-- ════════════════════════ GROUP 5 · PRODUCTION & PLATFORM ════════════════════════ -->
+<div class="group-label">
+  <div class="g-title"><span class="g-kicker">Track 5</span>⚙️ Production &amp; Platform</div>
+  <div class="g-path">Path: <b>Production LLMOps</b><span class="arr">→</span><b>AI Platform Engineering</b></div>
+</div>
+
+<div class="course-grid">
+
+  <a href="courses/llmops/index.html" class="course-card" style="--card-color: var(--llmops)">
+    <div class="card-step">Step 1</div>
+    <div class="card-icon">⚙️</div>
+    <div class="card-tag">Production · Operations</div>
+    <div class="card-title">Production LLMOps</div>
+    <div class="card-desc">The "Day 2" discipline for LLM systems already in production — evaluation, deployment, monitoring, incident response, drift, and governance. Keep agents reliable, observable, and accountable after launch.</div>
+    <div class="card-meta">
+      <span>32 modules</span>
+      <span>8 tracks</span>
+      <span>64 capstones</span>
+      <span>Intermediate–Advanced</span>
+      <span class="card-path">/courses/llmops/</span>
+    </div>
+  </a>
+
+  <a href="courses/ai-platform-engineering/index.html" class="course-card" style="--card-color: var(--platform)">
+    <div class="card-step">Step 2</div>
+    <div class="card-icon">🏗️</div>
+    <div class="card-tag">Infrastructure Pillar</div>
+    <div class="card-title">AI Platform Engineering</div>
+    <div class="card-desc">Build the internal AI platform layer every team relies on — model gateway, prompt registry, guardrails, evaluation harness, cost controls, and compliance. Turn scattered AI experiments into shared infrastructure.</div>
+    <div class="card-meta">
+      <span>32 modules</span>
+      <span>8 tracks</span>
+      <span>64 capstones</span>
+      <span>Intermediate–Advanced</span>
+      <span class="card-path">/courses/ai-platform-engineering/</span>
+    </div>
+  </a>
+
+</div>
+
+<!-- ════════════════════════ COMPANION RESOURCES ════════════════════════ -->
+<div class="group-label">
+  <div class="g-title"><span class="g-kicker">Extras</span>📱 Companion Resources</div>
+</div>
+
+<div class="secondary-grid">
+  <a href="mobile/index.html" class="secondary-card">
+    <div class="sc-icon">📱</div>
+    <div>
+      <div class="sc-title">Mobile Study Guide</div>
+      <div class="sc-desc">Condensed mobile-friendly versions of the course modules with pseudocode and quick-reference cards.</div>
+    </div>
+  </a>
+</div>
+
+<footer>
+  AI Agent Development Course Catalog &mdash; Built with Claude Code
+</footer>
+
+</body>
+</html>
