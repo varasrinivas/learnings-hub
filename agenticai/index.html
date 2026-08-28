@@ -147,6 +147,21 @@
     }
     .card-path { width: 100%; font-size: 0.72rem; color: var(--text-muted); opacity: 0.75; }
 
+    /* ── Card with a second destination ──
+       The cover link makes the whole card clickable (nesting <a> is invalid),
+       so any real link inside must sit above it. */
+    .card-cover { position: absolute; inset: 0; z-index: 1; }
+    .card-link {
+      position: relative; z-index: 2; align-self: flex-start;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.74rem; font-weight: 600;
+      color: var(--card-color); text-decoration: none;
+      border: 1px solid color-mix(in srgb, var(--card-color) 40%, transparent);
+      background: color-mix(in srgb, var(--card-color) 10%, transparent);
+      border-radius: 99px; padding: 0.3rem 0.85rem;
+      transition: background 200ms, border-color 200ms;
+    }
+    .card-link:hover { background: color-mix(in srgb, var(--card-color) 22%, transparent); border-color: var(--card-color); }
+
     /* ── Companion card (smaller, secondary) ── */
     .secondary-grid {
       max-width: 1100px; margin: 0 auto; padding: 0 2rem 4rem;
@@ -279,12 +294,15 @@
     </div>
   </a>
 
-  <a href="courses/spec-driven-development/index.html" class="course-card" style="--card-color: var(--sdd)">
+  <div class="course-card" style="--card-color: var(--sdd)">
+    <a class="card-cover" href="courses/spec-driven-development/index.html"
+       aria-label="Spec-Driven Development with Claude — open the field guide"></a>
     <div class="card-step">Step 4</div>
     <div class="card-icon">📋</div>
     <div class="card-tag">New · Methodology</div>
     <div class="card-title">Spec-Driven Development with Claude</div>
     <div class="card-desc">Stop prompting and start specifying — a field guide to specs Claude can build against. Three scenarios (feature, defect, migration) worked end-to-end on a healthcare prior-auth platform, with a runnable Spring Boot companion repo and four hands-on labs.</div>
+    <a class="card-link" href="courses/spec-driven-development/walkthrough/index.html">▶ Visual walkthrough</a>
     <div class="card-meta">
       <span>Field guide</span>
       <span>3 scenarios</span>
@@ -292,7 +310,7 @@
       <span>Intermediate</span>
       <span class="card-path">/courses/spec-driven-development/</span>
     </div>
-  </a>
+  </div>
 
 </div>
 
