@@ -5,11 +5,32 @@ page that collates the available courses as cards and links into each one.
 
 Also home to **`agenticai/index.html`** — the canonical source of the
 [agenticai.varasrinivas.com](https://agenticai.varasrinivas.com/) landing page (bucket-root object of
-the `agenticai.varasrinivas.com` S3 bucket, CloudFront `E204WFPQTUDQ3Q`). It groups the 13 AI-agent
-courses into five tracks, shows a suggested learning path, and prints each course's site path on its
+the `agenticai.varasrinivas.com` S3 bucket, CloudFront `E204WFPQTUDQ3Q`). It groups the 15 AI-agent
+courses into six tracks, shows a suggested learning path, and prints each course's site path on its
 card. Deploy by hand: `aws s3 cp agenticai/index.html s3://agenticai.varasrinivas.com/index.html
 --content-type "text/html; charset=utf-8" --cache-control "public, max-age=300"` then invalidate
 `/` and `/index.html` on `E204WFPQTUDQ3Q` (use `MSYS_NO_PATHCONV=1` under Git Bash).
+
+### Previewing it locally
+
+The catalog links to `courses/<slug>/index.html`, which only resolves on the deployed site — locally
+each course lives in its own sibling repo, in its own layout. `agenticai/serve-local.py` maps the
+deployed URL structure onto those real directories:
+
+```bash
+python agenticai/serve-local.py          # http://127.0.0.1:8000
+python agenticai/serve-local.py --open   # and open a browser
+```
+
+Nothing is copied and there is no second landing page to drift — it serves the same
+`agenticai/index.html` that deploys to the bucket root, so what you click through locally is what
+ships. Because the URLs match production, cross-course links inside modules (`../code-with-ai/`)
+resolve too, which a plain `python -m http.server` cannot do.
+
+Courses whose repo isn't checked out are listed at startup and return a readable 404 naming the
+missing repo, so a partial checkout still previews everything else. Sibling repos it expects:
+`claude-agent-course-final-adv`, `campuscrave-kit`, `context-eng-kit`, `knowledge-graph`,
+`ultimate-context-eng`, `priorauth-sdd-course`, `llmops-kit`, `ai-platform-kit`.
 
 A standalone `index.html`: no build step, no dependencies (web fonts only), dark theme matching the
 courses, responsive, and accessible (honors `prefers-reduced-motion`).
