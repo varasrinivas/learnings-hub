@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Agent Development — Course Catalog</title>
-  <meta name="description" content="Fifteen focused courses on building AI agents — Claude, Gemini, OpenAI, MCP, open-source models, LLMOps, context engineering, spec-driven development, knowledge graphs, and AI platform engineering — grouped into six tracks with a suggested learning path.">
+  <meta name="description" content="Sixteen focused courses on building AI agents — Claude, Gemini, OpenAI, MCP, open-source models, LLMOps, context engineering, spec-driven development with OpenSpec, knowledge graphs, and AI platform engineering — grouped into six tracks with a suggested learning path.">
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -24,6 +24,7 @@
       --opensource:#10B981;
       --compare:   #F97316;
       --kg: #8B5CF6; --uce: #2e6b8a; --multisdk:  #EC4899; --sdd: #84CC16;
+      --openspec: #F59E0B;
       --startbase: #FB7185;
     }
     body {
@@ -202,11 +203,11 @@
 <header class="hero">
   <div class="hero-badge">AI AGENT DEVELOPMENT · COURSE CATALOG</div>
   <h1>Build <span>AI Agents</span> That Ship</h1>
-  <p>Fifteen focused courses covering Claude, Gemini, OpenAI, MCP, open-source models, LLMOps, context engineering, spec-driven development, and knowledge graphs — grouped into six tracks, from your first AI-assisted commit to production deployment.</p>
+  <p>Sixteen focused courses covering Claude, Gemini, OpenAI, MCP, open-source models, LLMOps, context engineering, spec-driven development, and knowledge graphs — grouped into six tracks, from your first AI-assisted commit to production deployment.</p>
 </header>
 
 <div class="stats">
-  <div class="stat"><div class="n">15</div><div class="l">Courses</div></div>
+  <div class="stat"><div class="n">16</div><div class="l">Courses</div></div>
   <div class="stat"><div class="n">6</div><div class="l">Tracks</div></div>
   <div class="stat"><div class="n">290+</div><div class="l">Modules</div></div>
   <div class="stat"><div class="n">200+</div><div class="l">Capstone Labs</div></div>
@@ -278,7 +279,7 @@
 <!-- ════════════════════════ GROUP 1 · AGENTS WITH CLAUDE ════════════════════════ -->
 <div class="group-label">
   <div class="g-title"><span class="g-kicker">Track 1</span>🤖 Agents with Claude</div>
-  <div class="g-path">Path: <b>AI Agents with Claude</b><span class="arr">→</span><b>Claude Code Mastery</b><span class="arr">→</span><b>MCP</b><span class="arr">→</span><b>Spec-Driven Development</b></div>
+  <div class="g-path">Path: <b>AI Agents with Claude</b><span class="arr">→</span><b>Claude Code Mastery</b><span class="arr">→</span><b>MCP</b><span class="arr">→</span><b>SDD by hand</b><span class="arr">→</span><b>SDD with OpenSpec</b></div>
 </div>
 
 <div class="course-grid">
@@ -344,6 +345,52 @@
     </div>
   </div>
 
+  <div class="course-card" style="--card-color: var(--openspec)">
+    <a class="card-cover" href="courses/openspec/index.html"
+       aria-label="Spec-Driven Development with OpenSpec — open the course"></a>
+    <div class="card-step">Step 5</div>
+    <div class="card-icon">📐</div>
+    <div class="card-tag">New · Tooling</div>
+    <div class="card-title">Spec-Driven Development with OpenSpec</div>
+    <div class="card-desc">The same discipline, tool-assisted. OpenSpec keeps capability specs as living documentation and every change as a reviewable proposal that is archived back into them — across Claude Code, Cursor, Copilot and 30+ agents. Nine phases from setup through governance, in Python and Java.</div>
+    <div class="card-meta">
+      <span>9 phases</span>
+      <span>Python + Java</span>
+      <span>Capstone project</span>
+      <span>Intermediate</span>
+      <span class="card-path">/courses/openspec/</span>
+    </div>
+  </div>
+
+</div>
+
+<div class="group-label">
+  <div class="g-title"><span class="g-kicker">Track 1 · specializations</span>📐 OpenSpec by stack</div>
+  <div class="g-path">Take after the OpenSpec course — each applies the same workflow to one stack</div>
+</div>
+
+<div class="secondary-grid">
+  <a href="courses/openspec/frontend.html" class="secondary-card">
+    <div class="sc-icon">⚛️</div>
+    <div>
+      <div class="sc-title">OpenSpec for React Frontends</div>
+      <div class="sc-desc">Component specs, contract-driven UI work, and keeping the frontend honest against a changing API.</div>
+    </div>
+  </a>
+  <a href="courses/openspec/api.html" class="secondary-card">
+    <div class="sc-icon">🌱</div>
+    <div>
+      <div class="sc-title">OpenSpec for Spring Boot APIs</div>
+      <div class="sc-desc">Capability specs for services, contract tests in CI, and a spec-coverage gate that fails a build when a scenario has no test.</div>
+    </div>
+  </a>
+  <a href="courses/openspec/data.html" class="secondary-card">
+    <div class="sc-icon">🗄️</div>
+    <div>
+      <div class="sc-title">OpenSpec for Data Engineering</div>
+      <div class="sc-desc">Bronze/silver/gold pipelines specified before they are built, with data-quality expectations as acceptance criteria.</div>
+    </div>
+  </a>
 </div>
 
 <!-- ════════════════════════ GROUP 2 · CONTEXT ENGINEERING & KNOWLEDGE ════════════════════════ -->
