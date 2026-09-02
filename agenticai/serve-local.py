@@ -54,7 +54,9 @@ ROUTES: dict[str, Path] = {
     "/courses/spec-driven-development/":            REPOS / "priorauth-sdd-course",
 
     "/courses/llmops/course/walkthrough/":           REPOS / "llmops-kit" / "walkthrough",
-    "/courses/llmops/":                             REPOS / "llmops-kit" / "course",
+    # Repo root, not course/: the catalog opens llmops-course-map.html, which
+    # sits beside course/index.html on the site but above it in the repo.
+    "/courses/llmops/":                             REPOS / "llmops-kit",
     "/courses/ai-platform-engineering/walkthrough/": REPOS / "ai-platform-kit" / "walkthrough",
     "/courses/ai-platform-engineering/":            REPOS / "ai-platform-kit" / "course",
     "/courses/code-with-ai/":                        REPOS / "campuscrave-kit",
