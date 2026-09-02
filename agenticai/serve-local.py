@@ -53,14 +53,35 @@ ROUTES: dict[str, Path] = {
     "/courses/spec-driven-development/walkthrough/": REPOS / "priorauth-sdd-course" / "walkthrough",
     "/courses/spec-driven-development/":            REPOS / "priorauth-sdd-course",
 
-    "/courses/llmops/":                   REPOS / "llmops-kit" / "course",
-    "/courses/ai-platform-engineering/":  REPOS / "ai-platform-kit" / "course",
-    "/courses/code-with-ai/":             REPOS / "campuscrave-kit",
+    "/courses/llmops/course/walkthrough/":           REPOS / "llmops-kit" / "walkthrough",
+    "/courses/llmops/":                             REPOS / "llmops-kit" / "course",
+    "/courses/ai-platform-engineering/walkthrough/": REPOS / "ai-platform-kit" / "walkthrough",
+    "/courses/ai-platform-engineering/":            REPOS / "ai-platform-kit" / "course",
+    "/courses/code-with-ai/":                        REPOS / "campuscrave-kit",
+
+    # The four OpenSpec pages are single files in the AI-SDLC build output,
+    # renamed on deploy — see ALIASES, and ALIAS_ONLY below.
+    "/courses/openspec/":                            REPOS / "ai-sdlc-course-final" / "output",
 }
 
 # Where a course's landing file isn't literally named index.html on disk.
 ALIASES: dict[str, str] = {
     "/courses/spec-driven-development/index.html": "spec-driven-development-guide.html",
+    "/courses/openspec/index.html":                "ai-sdlc-openspec-course.html",
+    "/courses/openspec/frontend.html":             "ai-sdlc-openspec-frontend-course.html",
+    "/courses/openspec/api.html":                  "ai-sdlc-openspec-api-course.html",
+    "/courses/openspec/data.html":                 "ai-sdlc-openspec-data-course.html",
+}
+
+# Routes that serve their ALIASES entries and nothing else. `/courses/openspec/`
+# points at the shared AI-SDLC output directory, which also holds twenty
+# unrelated courses; without this they would all be reachable under that prefix.
+ALIAS_ONLY: frozenset[str] = frozenset({"/courses/openspec/"})
+
+# Deployed content that no repo builds — uploaded straight to the bucket. The
+# only honest local answer is a pointer at the live site.
+DEPLOY_ONLY: dict[str, str] = {
+    "/courses/openspec/labs/": "the OpenSpec lab bundles (Python, Java, data zips)",
 }
 
 # Which repo to name when a route's directory is absent.
@@ -73,6 +94,7 @@ REPO_OF = {
     "/courses/llmops/": "llmops-kit",
     "/courses/ai-platform-engineering/": "ai-platform-kit",
     "/courses/code-with-ai/": "campuscrave-kit",
+    "/courses/openspec/": "ai-sdlc-course-final",
 }
 
 
@@ -94,9 +116,11 @@ class CatalogHandler(http.server.SimpleHTTPRequestHandler):
     """Maps deployed-site URLs onto the local repos."""
 
     missing_prefix: str | None = None
+    deploy_only: tuple[str, str] | None = None
 
     def translate_path(self, path: str) -> str:
         self.missing_prefix = None
+        self.deploy_only = None
 
         urlpath = urllib.parse.urlsplit(path).path
         urlpath = urllib.parse.unquote(urlpath, errors="surrogatepass")
@@ -120,12 +144,20 @@ class CatalogHandler(http.server.SimpleHTTPRequestHandler):
         if urlpath in ("/index.html", "/"):
             return str(HERE / "index.html")
 
+        # Checked before _match, since these sit under a route that exists.
+        for only, what in DEPLOY_ONLY.items():
+            if urlpath.startswith(only):
+                self.deploy_only = (only, what)
+                return str(HERE / "__deploy_only__")
+
         alias = ALIASES.get(urlpath)
         hit = _match(urlpath)
         if hit is None:
             return str(HERE / "__no_route__")
 
         prefix, root = hit
+        if prefix in ALIAS_ONLY and alias is None:
+            return str(HERE / "__no_route__")
         if not root.is_dir():
             self.missing_prefix = prefix
             return str(HERE / "__missing_repo__")
@@ -141,6 +173,24 @@ class CatalogHandler(http.server.SimpleHTTPRequestHandler):
         return str(target)
 
     def send_error(self, code, message=None, explain=None):  # noqa: N802
+        if code == 404 and self.deploy_only:
+            only, what = self.deploy_only
+            live = f"https://agenticai.varasrinivas.com{only}"
+            body = (
+                f"<h1>Published, but not built from a repo</h1>"
+                f"<p><code>{only}</code> serves {what}, which were uploaded "
+                f"straight to the bucket. Nothing on disk reproduces them, so "
+                f"this preview cannot serve them.</p>"
+                f'<p>They are live at <a href="{live}">{live}</a>.</p>'
+                f'<p><a href="/">&larr; back to the catalog</a></p>'
+            ).encode("utf-8")
+            self.send_response(404)
+            self.send_header("Content-Type", "text/html; charset=utf-8")
+            self.send_header("Content-Length", str(len(body)))
+            self.end_headers()
+            if self.command != "HEAD":
+                self.wfile.write(body)
+            return
         if code == 404 and self.missing_prefix:
             repo = _repo_for(self.missing_prefix)
             body = (
@@ -182,6 +232,8 @@ def report() -> int:
         else:
             missing += 1
             print(f"  [MISSING] {prefix}  <- {_repo_for(prefix)} not checked out")
+    for only in sorted(DEPLOY_ONLY):
+        print(f"  [live]    {only}  <- deployed only; not built from a repo")
     return missing
 
 
