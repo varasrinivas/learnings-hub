@@ -141,6 +141,9 @@
     }
     .card-title { font-size: 1.2rem; font-weight: 700; }
     .card-desc { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.55; flex: 1; }
+    .card-desc code { font-family: 'JetBrains Mono', monospace; font-size: 0.82em;
+      background: color-mix(in srgb, var(--card-color) 12%, transparent);
+      padding: 0.05em 0.35em; border-radius: 3px; }
     .card-meta {
       display: flex; gap: 1rem; font-size: 0.8rem; color: var(--text-muted);
       font-family: 'JetBrains Mono', monospace; margin-top: 0.25rem;
@@ -421,12 +424,13 @@
     <div class="card-icon">🧠</div>
     <div class="card-tag">Foundational Pillar</div>
     <div class="card-title">Context Engineering</div>
-    <div class="card-desc">Master the LLM context window end to end — design, assembly, retrieval, compression, optimization, and governance of everything you feed a model. The skill under every reliable agent.</div>
+    <div class="card-desc">Master the LLM context window end to end — design, assembly, retrieval, compression, optimization, and governance of everything you feed a model. The skill under every reliable agent — and under every good session with a coding agent: every module carries a <b>Dev Lens</b> naming its form in your IDE, from CLAUDE.md as a system prompt to what <code>/compact</code> quietly drops.</div>
     <a class="card-link" href="courses/context-engineering/walkthrough/index.html">▶ Walkthroughs</a>
     <div class="card-meta">
       <span>32 modules</span>
       <span>8 tracks</span>
-      <span>64 capstones</span>
+      <span>64 labs</span>
+      <span>2 reading paths</span>
       <span>Foundational–Advanced</span>
       <span class="card-path">/courses/context-engineering/</span>
     </div>
