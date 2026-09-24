@@ -167,6 +167,7 @@
       transition: background 200ms, border-color 200ms;
     }
     .card-link:hover { background: color-mix(in srgb, var(--card-color) 22%, transparent); border-color: var(--card-color); }
+    .card-links { display: flex; flex-wrap: wrap; gap: 0.5rem; }  /* a card with two pill links keeps them on one row */
 
     /* ── Companion card (smaller, secondary) ── */
     .secondary-grid {
@@ -676,7 +677,10 @@
     <div class="card-tag">Adoption · Autonomy Ladder</div>
     <div class="card-title">The Autonomy Line</div>
     <div class="card-desc">Take one workflow from an assistant suggesting a line to an agent running whole cases, and build the controls that earn each step. Nine modules on prior-authorisation intake, with nothing to install: every lab runs on evidence shipped with the course, including the agent output that is plausible and wrong. Each module ends in something you keep — a context file, a review checklist, an autonomy boundary, a golden set, an agent card.</div>
-    <a class="card-link" href="courses/autonomy-line-course/autonomy-line-course.pdf" download>⬇ Download the PDF</a>
+    <div class="card-links">
+      <a class="card-link" href="courses/autonomy-line-course/index.html#m0">▶ Start building</a>
+      <a class="card-link" href="courses/autonomy-line-course/autonomy-line-course.pdf" download>⬇ Download the PDF</a>
+    </div>
     <div class="card-meta">
       <span>9 modules</span>
       <span>~7 hours</span>
