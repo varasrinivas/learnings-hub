@@ -15,7 +15,7 @@
   --bg-primary:#0f0f1a; --bg-surface:#1a1a2e; --bg-elevated:#242442;
   --text-primary:#e8e8e8; --text-secondary:#a0a0b8; --text-muted:#6b6b80;
   --accent-cyan:#00d4ff; --accent-purple:#b088f9; --accent-emerald:#06d6a0;
-  --java:#ffb627; --python:#4584b6; --spring:#6db33f; --aidlc:#ff9900; --aidlcstep:#2bb3c0; --de:#e25a1c; --decore:#17a58c; --sprint:#e2cf9f; --tenx:#f5b84b; --mandate:#cf7d45; --manybolts:#7f8cf5; --fullstack:#c4531f;
+  --java:#ffb627; --python:#4584b6; --spring:#6db33f; --aidlc:#ff9900; --aidlcstep:#2bb3c0; --de:#e25a1c; --decore:#17a58c; --sprint:#e2cf9f; --tenx:#f5b84b; --mandate:#cf7d45; --manybolts:#7f8cf5; --fullstack:#c4531f; --archon:#a78bfa;
   --font-display:'Fraunces',serif; --font-body:'Inter',sans-serif; --font-code:'JetBrains Mono',monospace;
   --radius:14px; --transition:400ms ease-out;
 }
@@ -545,6 +545,30 @@ footer a:hover{color:var(--accent-cyan)}
         <a class="card-labs" href="ai-dlc-execution/aidlc-rally-team-of-four.html#follow">Sample repos to follow it: workspace, API, web, answer key <span class="arrow">&rarr;</span></a>
         <a class="card-labs" href="ai-dlc-execution/aidlc-f1220-runbook.html">Team runbook: F1220 built for real by five people, every turn and pitfall <span class="arrow">&rarr;</span></a>
         <a class="card-labs" href="ai-dlc-execution/aidlc-quality-checks.html">Quality checks in CLAUDE.md: a rule asks, a command checks (a real run) <span class="arrow">&rarr;</span></a>
+      </div>
+
+      <div class="card" style="--c:var(--archon)">
+        <a class="card-main" href="archon/">
+          <span class="chip" aria-hidden="true">
+            <svg viewBox="0 0 512 512" fill="none" stroke="#0f0f1a" stroke-width="26" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="64" y="96" width="128" height="88" rx="18"/>
+              <rect x="320" y="96" width="128" height="88" rx="18"/>
+              <rect x="192" y="328" width="128" height="88" rx="18" fill="#0f0f1a" stroke="none"/>
+              <path d="M128 184 L128 256 L384 256 L384 184"/>
+              <path d="M256 256 L256 328"/>
+            </svg>
+          </span>
+          <h2>Archon, Step by Step &mdash; the same request as a YAML workflow</h2>
+          <p>Archon, the open-source workflow engine for AI coding, run with Claude Code: agents where judgment is needed, commands where it isn't, and a pause wherever a person must decide. Learn the concepts (nodes, the graph, loops, waits, worktrees, artifacts, the bundled sdlc pack), set Archon up for a repo, then follow an 18-step real run of the AI-DLC course's request on the same Spring Boot repo: questions answered, requirements sent back, code looped until the tests pass, a review that finds a real bug, the fix and the merge. Ends with a side-by-side with AI-DLC.</p>
+          <div class="tags">
+            <span class="tag">Archon 0.13.2 &middot; Claude Code</span>
+            <span class="tag">introduction &middot; concepts &middot; setup</span>
+            <span class="tag">18-step real run &middot; 24 tests</span>
+            <span class="tag">Java 21 &middot; Spring Boot</span>
+          </div>
+          <span class="cta">Start the course <span class="arrow">&rarr;</span></span>
+        </a>
+        <a class="card-labs" href="archon/archon-hello-world-java/archon-hello-world-java-run.html">Hands-on run: one request through a 15-node workflow, every command and reply <span class="arrow">&rarr;</span></a>
       </div>
 
       <div class="card has-index" style="--c:var(--de)">
