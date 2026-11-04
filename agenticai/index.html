@@ -1,899 +1,130 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Agent Development — Course Catalog</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Agent Development — Course Catalog</title>
   <meta name="description" content="Twenty-five focused courses on building AI agents — Claude, Gemini, OpenAI, MCP, open-source models, LLMOps, context engineering, spec-driven development with OpenSpec, knowledge graphs, and AI platform engineering — grouped into seven tracks with a suggested learning path.">
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --bg-primary: #0A1628; --bg-secondary: #111D33; --bg-card: #162033; --bg-surface: #1A2740;
-      --text-primary: #E8ECF1; --text-secondary: #94A3B8; --text-muted: #64748B;
-      --accent: #D4A843; --accent-hover: #E5BC5A; --accent-muted: rgba(212,168,67,0.12);
-      --border: #21262D;
-      --claude:    #D4A843;
-      --llmops:    #EF4444;
-      --ctxeng:    #14B8A6;
-      --platform:  #6366F1;
-      --cc:        #A855F7;
-      --mcp:       #06B6D4;
-      --gemini:    #4285F4;
-      --gca:       #8B5CF6;
-      --opensource:#10B981;
-      --compare:   #F97316;
-      --kg: #8B5CF6; --rag: #0f8a7e; --uce: #2e6b8a; --multisdk:  #EC4899; --sdd: #84CC16;
-      --openspec: #F59E0B; --aidlc: #0E7490; --archon: #7C3AED;
-      --startbase: #FB7185;
-  --priorauth: #FFB020; --autonomy: #E1251B; --ror: #4FB596; --leadagents: #2F5BD8; --agentguide: #0E7F81;
-    }
-    body {
-      background: var(--bg-primary); color: var(--text-primary);
-      font-family: 'Source Sans 3', sans-serif; font-size: 1rem; line-height: 1.7;
-      min-height: 100vh;
-    }
-    h1, h2, h3 { font-family: 'Bricolage Grotesque', sans-serif; line-height: 1.2; }
-
-    /* ── Hero ── */
-    .hero {
-      text-align: center; padding: 5rem 2rem 3.5rem;
-      background: radial-gradient(ellipse at 50% 0%, rgba(212,168,67,0.07) 0%, transparent 65%);
-    }
-    .hero-badge {
-      display: inline-block; padding: 0.35rem 1rem; border-radius: 99px;
-      background: var(--accent-muted); color: var(--accent);
-      font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 600;
-      margin-bottom: 1.5rem; letter-spacing: 0.06em;
-    }
-    .hero h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 1rem; }
-    .hero h1 span { color: var(--accent); }
-    .hero p { color: var(--text-secondary); font-size: 1.1rem; max-width: 640px; margin: 0 auto 0.5rem; }
-
-    /* ── Stats row ── */
-    .stats {
-      display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap;
-      padding: 1.5rem 2rem 2.5rem; max-width: 700px; margin: 0 auto;
-    }
-    .stat { text-align: center; }
-    .stat .n { font-family: 'Bricolage Grotesque', sans-serif; font-size: 2rem; font-weight: 800; color: var(--accent); }
-    .stat .l { font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
-
-    /* ── Suggested learning path ── */
-    .route {
-      margin: 0 0 3rem; padding: 1.4rem 1.75rem;
-      background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px;
-    }
-    .route-wrap { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
-    .route-title {
-      font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 600;
-      color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.9rem;
-    }
-    .route-flow { display: flex; flex-wrap: wrap; gap: 0.6rem 0.4rem; align-items: stretch; }
-    .route-step {
-      flex: 1 1 200px; background: var(--bg-surface); border: 1px solid var(--border);
-      border-radius: 10px; padding: 0.7rem 0.9rem;
-    }
-    .route-step .rs-n {
-      font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 600;
-      color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em;
-    }
-    .route-step .rs-t { font-weight: 600; font-size: 0.92rem; margin-top: 0.1rem; }
-    .route-step .rs-d { font-size: 0.8rem; color: var(--text-muted); line-height: 1.45; margin-top: 0.15rem; }
-    .route-arrow { align-self: center; color: var(--accent); font-size: 1.1rem; flex: 0 0 auto; }
-    @media (max-width: 760px) { .route-arrow { display: none; } }
-
-    /* ── Group header (section label + path) ── */
-    .group-label {
-      max-width: 1100px; margin: 0 auto; padding: 0 2rem 0.9rem;
-      display: flex; justify-content: space-between; align-items: baseline;
-      gap: 0.5rem 2rem; flex-wrap: wrap;
-      border-bottom: 1px solid var(--border); margin-bottom: 1.75rem;
-    }
-    .g-title {
-      font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.2rem; font-weight: 700;
-    }
-    .g-title .g-kicker {
-      display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem;
-      font-weight: 600; color: var(--text-muted); text-transform: uppercase;
-      letter-spacing: 0.1em; margin-bottom: 0.15rem;
-    }
-    .g-path {
-      font-family: 'JetBrains Mono', monospace; font-size: 0.74rem; color: var(--text-muted);
-    }
-    .g-path b { color: var(--text-secondary); font-weight: 600; }
-    .g-path .arr { color: var(--accent); padding: 0 0.15rem; }
-
-    /* ── Course grid ── */
-    .course-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 1.25rem; max-width: 1100px; margin: 0 auto; padding: 0 2rem 4rem;
-    }
-    .course-card {
-      background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px;
-      padding: 1.75rem; text-decoration: none; color: inherit;
-      display: flex; flex-direction: column; gap: 0.75rem;
-      transition: transform 200ms, border-color 200ms, box-shadow 200ms;
-      position: relative; overflow: hidden;
-    }
-    .course-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-      background: var(--card-color); opacity: 0.7; transition: opacity 200ms;
-    }
-    .course-card:hover { transform: translateY(-3px); border-color: var(--card-color); box-shadow: 0 10px 30px rgba(0,0,0,0.35); }
-    .course-card:hover::before { opacity: 1; }
-
-    .card-step {
-      position: absolute; top: 1rem; right: 1.25rem;
-      font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 600;
-      color: var(--card-color); border: 1px solid color-mix(in srgb, var(--card-color) 45%, transparent);
-      border-radius: 99px; padding: 0.12rem 0.6rem;
-      background: color-mix(in srgb, var(--card-color) 10%, transparent);
-    }
-    .card-icon {
-      width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center;
-      justify-content: center; font-size: 1.4rem;
-      background: color-mix(in srgb, var(--card-color) 15%, transparent);
-      border: 1px solid color-mix(in srgb, var(--card-color) 30%, transparent);
-    }
-    .card-tag {
-      font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 600;
-      color: var(--card-color); text-transform: uppercase; letter-spacing: 0.06em;
-    }
-    .card-title { font-size: 1.2rem; font-weight: 700; }
-    .card-desc { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.55; flex: 1; }
-    .card-desc code { font-family: 'JetBrains Mono', monospace; font-size: 0.82em;
-      background: color-mix(in srgb, var(--card-color) 12%, transparent);
-      padding: 0.05em 0.35em; border-radius: 3px; }
-    .card-meta {
-      display: flex; gap: 1rem; font-size: 0.8rem; color: var(--text-muted);
-      font-family: 'JetBrains Mono', monospace; margin-top: 0.25rem;
-      padding-top: 0.75rem; border-top: 1px solid var(--border);
-      flex-wrap: wrap;
-    }
-    .card-path { width: 100%; font-size: 0.72rem; color: var(--text-muted); opacity: 0.75; }
-
-    /* ── Card with a second destination ──
-       The cover link makes the whole card clickable (nesting <a> is invalid),
-       so any real link inside must sit above it. */
-    .card-cover { position: absolute; inset: 0; z-index: 1; }
-    .card-link {
-      position: relative; z-index: 2; align-self: flex-start;
-      font-family: 'JetBrains Mono', monospace; font-size: 0.74rem; font-weight: 600;
-      color: var(--card-color); text-decoration: none;
-      border: 1px solid color-mix(in srgb, var(--card-color) 40%, transparent);
-      background: color-mix(in srgb, var(--card-color) 10%, transparent);
-      border-radius: 99px; padding: 0.3rem 0.85rem;
-      transition: background 200ms, border-color 200ms;
-    }
-    .card-link:hover { background: color-mix(in srgb, var(--card-color) 22%, transparent); border-color: var(--card-color); }
-    .card-links { display: flex; flex-wrap: wrap; gap: 0.5rem; }  /* a card with two pill links keeps them on one row */
-
-    /* ── Companion card (smaller, secondary) ── */
-    .secondary-grid {
-      max-width: 1100px; margin: 0 auto; padding: 0 2rem 4rem;
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem;
-    }
-    .secondary-card {
-      background: var(--bg-surface); border: 1px solid var(--border); border-radius: 10px;
-      padding: 1.25rem 1.5rem; text-decoration: none; color: inherit;
-      display: flex; align-items: center; gap: 1rem;
-      transition: border-color 200ms, background 200ms;
-    }
-    .secondary-card:hover { border-color: var(--accent); background: var(--bg-card); }
-    .secondary-card .sc-icon { font-size: 1.5rem; flex-shrink: 0; }
-    .secondary-card .sc-title { font-weight: 700; font-size: 0.95rem; }
-    .secondary-card .sc-desc { font-size: 0.82rem; color: var(--text-muted); margin-top: 0.15rem; }
-
-    /* ── Footer ── */
-    footer {
-      text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.82rem;
-      border-top: 1px solid var(--border);
-    }
-
-    @media (max-width: 640px) {
-      .hero h1 { font-size: 2rem; }
-      .course-grid { grid-template-columns: 1fr; }
-      .stats { gap: 1.5rem; }
-      .group-label { flex-direction: column; align-items: flex-start; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .course-card, .secondary-card { transition: none; }
-    }
-  </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@600;700;800&family=Red+Hat+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F4F5F8;--panel:#FFFFFF;--ink:#141A26;--ink-2:#46526A;--ink-3:#77839A;--line:#DCE1EA;--accent:#8A5A00;--accent-soft:#FBF1DC;
+  --font-display:"Red Hat Display","Segoe UI",system-ui,sans-serif;--font-text:"Red Hat Text","Segoe UI",system-ui,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0A1628;--panel:#131F35;--ink:#E8ECF1;--ink-2:#A9B6C8;--ink-3:#73839A;--line:#23324A;--accent:#D4A843;--accent-soft:#2A2614}}
+:root[data-theme="dark"]{--bg:#0A1628;--panel:#131F35;--ink:#E8ECF1;--ink-2:#A9B6C8;--ink-3:#73839A;--line:#23324A;--accent:#D4A843;--accent-soft:#2A2614}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--font-text);-webkit-font-smoothing:antialiased}
+main{max-width:920px;margin:0 auto;padding:48px 16px 64px}
+a{color:var(--accent)}
+h1{font:800 clamp(1.9rem,4.5vw,2.7rem)/1.12 var(--font-display);margin:0 0 12px;letter-spacing:-.01em}
+h2{font:750 1.4rem/1.2 var(--font-display);margin:0 0 4px}
+.kicker,.pn{font:600 .8rem var(--font-display);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 6px}
+.lead{color:var(--ink-2);font-size:1.08rem;margin:0 0 22px;max-width:66ch}
+.stats{display:flex;flex-wrap:wrap;gap:10px 28px;margin:0 0 28px}
+.stat b{font:800 1.6rem var(--font-display);color:var(--ink);margin-right:6px}
+.stat span{color:var(--ink-3);font-size:.9rem}
+.route{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.route h2{font-size:1.05rem;margin-bottom:12px}
+.route ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.route a{display:block;height:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;color:inherit;text-decoration:none}
+.route a:hover,.route a:focus-visible{border-color:var(--accent)}
+.rn{display:block;font:600 .72rem var(--font-display);letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.route b{display:block;font:700 .92rem/1.3 var(--font-display);margin:2px 0 4px}
+.route em{display:block;font-style:normal;color:var(--ink-2);font-size:.82rem;line-height:1.45}
+.path{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0 8px;padding:0;list-style:none}
+.path a{display:flex;gap:8px;align-items:center;padding:6px 12px 6px 6px;border:1px solid var(--line);background:var(--panel);border-radius:999px;color:var(--ink);text-decoration:none;font:600 .9rem var(--font-display)}
+.path a:hover,.path a:focus-visible{border-color:var(--accent)}
+.path span{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-size:.8rem}
+.part{margin-top:40px}
+.part header{margin-bottom:14px}
+.why{margin:0;color:var(--ink-2)}
+.why b{color:var(--ink);font-weight:600}
+.why .arr{margin:0 7px;color:var(--ink-3)}
+.mods{list-style:none;margin:0;padding:0;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.mod{display:grid;grid-template-columns:44px minmax(0,1fr);gap:4px 14px;padding:16px 20px 16px 16px;border-top:1px solid var(--line)}
+.mod:first-child{border-top:0}
+.n{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;border:1.5px solid var(--c,var(--accent));color:var(--c,var(--accent));font:700 .95rem var(--font-display)}
+.t{font:700 1.1rem/1.3 var(--font-display);color:var(--ink);text-decoration:none}
+.t:hover,.t:focus-visible{color:var(--accent);text-decoration:underline}
+.mod p{margin:4px 0 0;color:var(--ink-2);font-size:.95rem}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chips:empty{display:none}
+.chip{font:600 .78rem var(--font-display);padding:3px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent);text-decoration:none}
+.chip:hover,.chip:focus-visible{text-decoration:underline}
+.mod small{display:block;margin-top:8px;color:var(--ink-3);font-size:.82rem}
+.refs{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.ref{display:block;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;color:inherit;text-decoration:none}
+.ref:hover,.ref:focus-visible{border-color:var(--accent)}
+.ref b{display:block;font:700 1rem var(--font-display)}
+.ref span{color:var(--ink-2);font-size:.9rem}
+footer{text-align:center;color:var(--ink-3);font-size:.85rem;padding:0 16px 40px}
+@media (max-width:820px){.route ol{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:560px){.mod{grid-template-columns:34px minmax(0,1fr);padding:14px 14px 14px 12px}.n{width:28px;height:28px;font-size:.85rem}}
+</style>
 </head>
 <body>
+<main>
+  <p class="kicker">AI Agent Development · Course Catalog</p>
+  <h1>Build AI Agents That Ship</h1>
+  <p class="lead">Twenty-five focused courses covering Claude, Gemini, OpenAI, MCP, open-source models, LLMOps, context engineering, spec-driven development, and knowledge graphs — grouped into seven tracks, from your first AI-assisted commit to production deployment.</p>
+  <div class="stats"><div class="stat"><b>25</b><span>Courses</span></div><div class="stat"><b>7</b><span>Tracks</span></div><div class="stat"><b>290+</b><span>Modules</span></div><div class="stat"><b>200+</b><span>Capstone Labs</span></div></div>
+  <section class="route" aria-label="Suggested learning path"><h2>Suggested learning path</h2><ol><li><a href="courses/code-with-ai/index.html"><span class="rn">1 · Start Here</span><b>Code With AI · Java or Python</b><em>Never used an AI coding tool on real code? Begin here.</em></a></li><li><a href="courses/context-engineering/index.html"><span class="rn">2 · Foundations</span><b>Context Engineering</b><em>The skill under every reliable agent.</em></a></li><li><a href="courses/claude-agents/index.html"><span class="rn">3 · Build</span><b>AI Agents with Claude</b><em>The flagship — or Mistral &amp; Ollama / Gemini if that's your stack.</em></a></li><li><a href="#track2"><span class="rn">4 · Specialize</span><b>MCP · RAG · Knowledge Graphs · Ultimate Context Engineering</b><em>Deepen the layers your agents depend on.</em></a></li><li><a href="#track5"><span class="rn">5 · Operate</span><b>LLMOps · AI Platform Engineering</b><em>Keep it reliable, observable, and governed after launch.</em></a></li></ol></section>
+  <nav aria-label="Tracks"><ol class="path"><li><a href="#track0"><span>0</span>Start Here</a></li><li><a href="#track1"><span>1</span>Agents with Claude</a></li><li><a href="#track2"><span>2</span>Context Engineering &amp; Knowledge</a></li><li><a href="#track3"><span>3</span>Google AI</a></li><li><a href="#track4"><span>4</span>Open Source &amp; Cross-Provider</a></li><li><a href="#track5"><span>5</span>Production &amp; Platform</a></li><li><a href="#track6"><span>6</span>Adoption in Practice</a></li><li><a href="#extras"><span>★</span>Companion Resources</a></li></ol></nav>
 
-<!-- ════════════════════════ HERO ════════════════════════ -->
-<header class="hero">
-  <div class="hero-badge">AI AGENT DEVELOPMENT · COURSE CATALOG</div>
-  <h1>Build <span>AI Agents</span> That Ship</h1>
-  <p>Twenty-five focused courses covering Claude, Gemini, OpenAI, MCP, open-source models, LLMOps, context engineering, spec-driven development, and knowledge graphs — grouped into seven tracks, from your first AI-assisted commit to production deployment.</p>
-</header>
-
-<div class="stats">
-  <div class="stat"><div class="n">25</div><div class="l">Courses</div></div>
-  <div class="stat"><div class="n">7</div><div class="l">Tracks</div></div>
-  <div class="stat"><div class="n">290+</div><div class="l">Modules</div></div>
-  <div class="stat"><div class="n">200+</div><div class="l">Capstone Labs</div></div>
-</div>
-
-<!-- ════════════════════════ SUGGESTED LEARNING PATH ════════════════════════ -->
-<div class="route-wrap">
-  <div class="route">
-    <div class="route-title">Suggested learning path</div>
-    <div class="route-flow">
-      <div class="route-step">
-        <div class="rs-n">1 · Start Here</div>
-        <div class="rs-t">Code With AI · Java or Python</div>
-        <div class="rs-d">Never used an AI coding tool on real code? Begin here.</div>
-      </div>
-      <div class="route-arrow">→</div>
-      <div class="route-step">
-        <div class="rs-n">2 · Foundations</div>
-        <div class="rs-t">Context Engineering</div>
-        <div class="rs-d">The skill under every reliable agent.</div>
-      </div>
-      <div class="route-arrow">→</div>
-      <div class="route-step">
-        <div class="rs-n">3 · Build</div>
-        <div class="rs-t">AI Agents with Claude</div>
-        <div class="rs-d">The flagship — or Mistral &amp; Ollama / Gemini if that's your stack.</div>
-      </div>
-      <div class="route-arrow">→</div>
-      <div class="route-step">
-        <div class="rs-n">4 · Specialize</div>
-        <div class="rs-t">MCP · RAG · Knowledge Graphs · Ultimate Context Engineering</div>
-        <div class="rs-d">Deepen the layers your agents depend on.</div>
-      </div>
-      <div class="route-arrow">→</div>
-      <div class="route-step">
-        <div class="rs-n">5 · Operate</div>
-        <div class="rs-t">LLMOps · AI Platform Engineering</div>
-        <div class="rs-d">Keep it reliable, observable, and governed after launch.</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ════════════════════════ GROUP 0 · START HERE ════════════════════════ -->
-<div class="group-label">
-  <div class="g-title"><span class="g-kicker">Track 0</span>🚀 Start Here</div>
-  <div class="g-path">New to AI coding tools? <b>This is the front door</b> — one real repo, twelve real bugs, in Java or Python</div>
-</div>
-
-<div class="course-grid">
-
-  <div class="course-card" style="--card-color: var(--startbase)">
-    <a class="card-cover" href="courses/code-with-ai/index.html"
-       aria-label="Code With AI — start the course"></a>
-    <div class="card-step">Step 0</div>
-    <div class="card-icon">🍜</div>
-    <div class="card-tag">Start Here · Fundamentals · Java</div>
-    <div class="card-title">Code With AI</div>
-    <div class="card-desc">Learn AI-assisted development the way you'll actually do it — inside one real codebase seeded with twelve deliberate bugs. Every lab runs three ways (Claude Code, Copilot, or a free tier), every fix has to be verified, and the final track has you measure your own before-and-after honestly.</div>
-    <a class="card-link" href="courses/code-with-ai/walkthrough/index.html">▶ Walkthroughs</a>
-    <div class="card-meta">
-      <span>44 episodes</span>
-      <span>8 tracks</span>
-      <span>1 capstone</span>
-      <span>Beginner</span>
-      <span class="card-path">/courses/code-with-ai/</span>
-    </div>
-  </div>
-
-  <div class="course-card" style="--card-color: var(--startbase)">
-    <a class="card-cover" href="courses/code-with-ai-python/index.html"
-       aria-label="Code With AI, Python edition — start the course"></a>
-    <div class="card-step">Step 0</div>
-    <div class="card-icon">🐍</div>
-    <div class="card-tag">Start Here · Fundamentals · Python</div>
-    <div class="card-title">Code With AI — Python edition</div>
-    <div class="card-desc">The same course and the same twelve deliberate bugs, rebuilt on a FastAPI + SQLAlchemy backend you run with uv. Every lab still runs three ways (Claude Code, Copilot, or a free tier), and every fix was re-measured on the Python code — including the places where Python behaves differently.</div>
-    <a class="card-link" href="courses/code-with-ai-python/walkthrough/index.html">▶ Walkthroughs</a>
-    <div class="card-meta">
-      <span>44 episodes</span>
-      <span>8 tracks</span>
-      <span>1 capstone</span>
-      <span>Beginner</span>
-      <span class="card-path">/courses/code-with-ai-python/</span>
-    </div>
-  </div>
-
-  <div class="course-card" style="--card-color: var(--startbase)">
-    <a class="card-cover" href="courses/starter-guides/index.html"
-       aria-label="Starter Guides — open the study guide"></a>
-    <div class="card-step">Step 0</div>
-    <div class="card-icon">📚</div>
-    <div class="card-tag">Start Here · Study Guide</div>
-    <div class="card-title">Starter Guides — Quick Study</div>
-    <div class="card-desc">Thinking about the AI path and not sure where to begin? Four starter PDFs, in order, on one study page. Stop 1 is the map: The Autonomy Line, where AI work is heading. Stop 2 covers the coding assistants you'll use on day one, stop 3 what an agent really is, and stop 4 how to build one properly, with a visual guide of 11 diagrams, an eval rubric and 30 interview flash cards, also as a PDF. Each stop has key takeaways, a glossary and self-check questions, with the full PDF one click away.</div>
-    <div class="card-links">
-      <a class="card-link" href="courses/starter-guides/index.html">▶ Start studying</a>
-      <a class="card-link" href="courses/starter-guides/index.html#pdfs">⬇ All five PDFs</a>
-    </div>
-    <div class="card-meta">
-      <span>4 stops</span>
-      <span>5 PDFs</span>
-      <span>11 diagrams</span>
-      <span>Beginner</span>
-      <span class="card-path">/courses/starter-guides/</span>
-    </div>
-  </div>
-
-</div>
-
-<!-- ════════════════════════ GROUP 1 · AGENTS WITH CLAUDE ════════════════════════ -->
-<div class="group-label">
-  <div class="g-title"><span class="g-kicker">Track 1</span>🤖 Agents with Claude</div>
-  <div class="g-path">Path: <b>AI Agents with Claude</b><span class="arr">→</span><b>Claude Code Mastery</b><span class="arr">→</span><b>MCP</b><span class="arr">→</span><b>SDD by hand</b><span class="arr">→</span><b>SDD with OpenSpec</b></div>
-</div>
-
-<div class="course-grid">
-
-  <div class="course-card" style="--card-color: var(--claude)">
-    <a class="card-cover" href="courses/claude-agents/index.html"
-       aria-label="Building AI Agents with Claude — open the course"></a>
-    <div class="card-step">Step 1</div>
-    <div class="card-icon">🤖</div>
-    <div class="card-tag">Flagship Course</div>
-    <div class="card-title">Building AI Agents with Claude</div>
-    <div class="card-desc">Full agent lifecycle — design, build, protect, observe, deploy. 9 tracks from LLM fundamentals through multi-agent production systems. Includes certification prep for Claude Certified Architect.</div>
-    <a class="card-link" href="courses/claude-agents/walkthrough/index.html">▶ Walkthroughs</a>
-    <div class="card-meta">
-      <span>33 modules</span>
-      <span>9 tracks</span>
-      <span>19 capstone labs</span>
-      <span>Python + TypeScript</span>
-      <span class="card-path">/courses/claude-agents/</span>
-    </div>
-  </div>
-
-  <div class="course-card" style="--card-color: var(--cc)">
-    <a class="card-cover" href="courses/cc/index.html"
-       aria-label="Claude Code Mastery — open the course"></a>
-    <div class="card-step">Step 2</div>
-    <div class="card-icon">⚡</div>
-    <div class="card-tag">Direct Track</div>
-    <div class="card-title">Claude Code Mastery</div>
-    <div class="card-desc">Deep-dive into Claude Code — API essentials, prompt engineering, CLAUDE.md, permissions, subagents, hooks, tool use, MCP, and the Agent SDK. Fast path for engineers already comfortable with LLMs.</div>
-    <a class="card-link" href="courses/cc/walkthrough/index.html">▶ Walkthroughs</a>
-    <div class="card-meta">
-      <span>16 modules</span>
-      <span>1 capstone</span>
-      <span>Intermediate–Advanced</span>
-      <span class="card-path">/courses/cc/</span>
-    </div>
-  </div>
-
-  <div class="course-card" style="--card-color: var(--mcp)">
-    <a class="card-cover" href="courses/mcp/index.html"
-       aria-label="MCP — Model Context Protocol — open the course"></a>
-    <div class="card-step">Step 3</div>
-    <div class="card-icon">🔌</div>
-    <div class="card-tag">Protocol Deep Dive</div>
-    <div class="card-title">MCP — Model Context Protocol</div>
-    <div class="card-desc">Build, secure, and orchestrate MCP servers from scratch. Covers resources, prompts, HTTP/SSE transport, multi-server orchestration, and production patterns for Claude Code and IDE integrations.</div>
-    <a class="card-link" href="courses/mcp/walkthrough/index.html">▶ Walkthroughs</a>
-    <div class="card-meta">
-      <span>9 modules</span>
-      <span>1 capstone</span>
-      <span>Intermediate</span>
-      <span class="card-path">/courses/mcp/</span>
-    </div>
-  </div>
-
-  <div class="course-card" style="--card-color: var(--sdd)">
-    <a class="card-cover" href="courses/spec-driven-development/index.html"
-       aria-label="Spec-Driven Development with Claude — open the field guide"></a>
-    <div class="card-step">Step 4</div>
-    <div class="card-icon">📋</div>
-    <div class="card-tag">New · Methodology</div>
-    <div class="card-title">Spec-Driven Development with Claude</div>
-    <div class="card-desc">Stop prompting and start specifying — a field guide to specs Claude can build against. Three scenarios (feature, defect, migration) worked end-to-end on a healthcare prior-auth platform, with a runnable Spring Boot companion repo and four hands-on labs.</div>
-    <a class="card-link" href="courses/spec-driven-development/walkthrough/index.html">▶ Labs quick reference</a>
-    <div class="card-meta">
-      <span>Field guide</span>
-      <span>3 scenarios</span>
-      <span>4 labs</span>
-      <span>Intermediate</span>
-      <span class="card-path">/courses/spec-driven-development/</span>
-    </div>
-  </div>
-
-  <div class="course-card" style="--card-color: var(--openspec)">
-    <a class="card-cover" href="courses/openspec/index.html"
-       aria-label="Spec-Driven Development with OpenSpec — open the course"></a>
-    <div class="card-step">Step 5</div>
-    <div class="card-icon">📐</div>
-    <div class="card-tag">New · Tooling</div>
-    <div class="card-title">Spec-Driven Development with OpenSpec</div>
-    <div class="card-desc">The same discipline, tool-assisted. OpenSpec keeps capability specs as living documentation and every change as a reviewable proposal that is archived back into them — across Claude Code, Cursor, Copilot and 30+ agents. Nine phases from setup through governance, in Python and Java.</div>
-    <a class="card-link" href="courses/openspec/labs/index.html">⬇ Lab bundles — Python · Java · Data</a>
-    <div class="card-meta">
-      <span>9 phases</span>
-      <span>28 hands-on labs</span>
-      <span>Python + Java</span>
-      <span>Intermediate</span>
-      <span class="card-path">/courses/openspec/</span>
-    </div>
-  </div>
-
-  <div class="course-card" style="--card-color: var(--aidlc)">
-    <a class="card-cover" href="courses/ai-dlc-execution/index.html"
-       aria-label="AWS AI-DLC, Step by Step — open the course"></a>
-    <div class="card-step">Step 6</div>
-    <div class="card-icon">🔁</div>
-    <div class="card-tag">New · Methodology</div>
-    <div class="card-title">AWS AI-DLC, Step by Step</div>
-    <div class="card-desc">The AI-Driven Development Lifecycle run with AI-DLC Workflows on Claude Code. Start by setting up a workspace, with every command and every generated file explained; then the concepts (phases, stages, gates, the audit record), a one-page cheat sheet, and a 17-step hands-on run that takes one real requirement from a Slack message to a merged pull request — on a Spring Boot repo, or the same run on a Python (FastAPI) repo. Windows and macOS commands, real code and real output. Plus a variant that starts from a Rally feature and a SharePoint spec, and a team page: one Rally feature, four user stories, four developers in one workspace, with the folder map, mob ceremonies and story PRs into a feature branch, and public sample repos (workspace, API, web) with an answer key to follow it yourself.</div>
-    <div class="card-links">
-      <a class="card-link" href="courses/ai-dlc-execution/aidlc-hello-world-java/aidlc-hello-world-java-run.html">▶ Hands-on run (Java)</a>
-      <a class="card-link" href="courses/ai-dlc-execution/aidlc-hello-world-python/aidlc-hello-world-python-run.html">▶ Hands-on run (Python)</a>
-      <a class="card-link" href="courses/ai-dlc-execution/aidlc-rally-team-of-four.html">▶ Four developers (Java)</a>
-      <a class="card-link" href="courses/ai-dlc-execution/aidlc-rally-team-of-four-python.html">▶ Four developers (Python)</a>
-      <a class="card-link" href="courses/ai-dlc-execution/aidlc-rally-team-of-four.html#follow">▶ Sample repos to follow along</a>
-      <a class="card-link" href="courses/ai-dlc-execution/aidlc-f1220-runbook.html">▶ Team runbook: a real run (F1220)</a>
-      <a class="card-link" href="courses/ai-dlc-execution/aidlc-quality-checks.html">▶ Quality checks in CLAUDE.md: a real run</a>
-    </div>
-    <div class="card-meta">
-      <span>Workspace setup</span>
-      <span>Concepts + cheat sheet</span>
-      <span>17-step run</span>
-      <span>Java · Spring Boot</span>
-      <span>Python · FastAPI</span>
-      <span>Intermediate</span>
-      <span class="card-path">/courses/ai-dlc-execution/</span>
-    </div>
-  </div>
-
-  <div class="course-card" style="--card-color: var(--archon)">
-    <a class="card-cover" href="courses/archon/index.html"
-       aria-label="Archon, Step by Step — open the course"></a>
-    <div class="card-step">Step 7</div>
-    <div class="card-icon">🧭</div>
-    <div class="card-tag">New · Tooling</div>
-    <div class="card-title">Archon, Step by Step</div>
-    <div class="card-desc">Archon, the open-source YAML workflow engine for AI coding, run with Claude Code. The introduction and concepts (nodes, the graph, loops, waits, workspaces and worktrees, artifacts, the bundled sdlc pack), a one-page cheat sheet and a concept map, setting up a team workspace with the repo cloned inside it (as in AI-DLC), and a 20-step real run of the same request as the AI-DLC course, every setup command included: questions answered, requirements sent back, a plan approved, code looped until the tests pass, a review, a bug found by hand, the fix and the merge. Then a 16-step real run of a bug whose fix spans two repos in the same kind of workspace. The workspaces and their repos are in the course files. Each run ends with a side-by-side with AI-DLC on the same change.</div>
-    <div class="card-links">
-      <a class="card-link" href="courses/archon/archon-hello-world-java/archon-hello-world-java-run.html">▶ Hands-on run (Java)</a>
-      <a class="card-link" href="courses/archon/archon-hello-world-java/archon-two-repos-run.html">▶ Two-repo run (folder project)</a>
-      <a class="card-link" href="courses/archon/archon-workspace-setup.html">▶ Set up Archon and a team workspace</a>
-      <a class="card-link" href="courses/archon/archon-concepts-onepage.html">▶ One-page cheat sheet</a>
-      <a class="card-link" href="courses/archon/archon-concepts-map.svg">▶ Concept map</a>
-      <a class="card-link" href="https://github.com/varasrinivas/ai-dlc-archon" target="_blank" rel="noopener">⌥ Course repo (GitHub)</a>
-    </div>
-    <div class="card-meta">
-      <span>Concepts + cheat sheet</span>
-      <span>Workspace setup</span>
-      <span>20-step run</span>
-      <span>Two-repo run</span>
-      <span>Java · Spring Boot</span>
-      <span>Intermediate</span>
-      <span class="card-path">/courses/archon/</span>
-    </div>
-  </div>
-
-</div>
-
-<div class="group-label">
-  <div class="g-title"><span class="g-kicker">Track 1 · specializations</span>📐 OpenSpec by stack</div>
-  <div class="g-path">Take after the OpenSpec course — each applies the same workflow to one stack</div>
-</div>
-
-<div class="secondary-grid">
-  <a href="courses/openspec/frontend.html" class="secondary-card">
-    <div class="sc-icon">⚛️</div>
-    <div>
-      <div class="sc-title">OpenSpec for React Frontends</div>
-      <div class="sc-desc">Component specs, contract-driven UI work, and keeping the frontend honest against a changing API.</div>
-    </div>
-  </a>
-  <a href="courses/openspec/api.html" class="secondary-card">
-    <div class="sc-icon">🌱</div>
-    <div>
-      <div class="sc-title">OpenSpec for Spring Boot APIs</div>
-      <div class="sc-desc">Capability specs for services, contract tests in CI, and a spec-coverage gate that fails a build when a scenario has no test.</div>
-    </div>
-  </a>
-  <a href="courses/openspec/data.html" class="secondary-card">
-    <div class="sc-icon">🗄️</div>
-    <div>
-      <div class="sc-title">OpenSpec for Data Engineering</div>
-      <div class="sc-desc">Bronze/silver/gold pipelines specified before they are built, with data-quality expectations as acceptance criteria.</div>
-    </div>
-  </a>
-</div>
-
-<!-- ════════════════════════ GROUP 2 · CONTEXT ENGINEERING & KNOWLEDGE ════════════════════════ -->
-<div class="group-label">
-  <div class="g-title"><span class="g-kicker">Track 2</span>🧠 Context Engineering &amp; Knowledge</div>
-  <div class="g-path">Path: <b>Context Engineering</b><span class="arr">→</span><b>RAG Master Class</b><span class="arr">→</span><b>Knowledge Graphs</b><span class="arr">→</span><b>Ultimate Context Engineering</b></div>
-</div>
-
-<div class="course-grid">
-
-  <div class="course-card" style="--card-color: var(--ctxeng)">
-    <a class="card-cover" href="courses/context-engineering/index.html"
-       aria-label="Context Engineering — open the course"></a>
-    <div class="card-step">Step 1</div>
-    <div class="card-icon">🧠</div>
-    <div class="card-tag">Foundational Pillar</div>
-    <div class="card-title">Context Engineering</div>
-    <div class="card-desc">Master the LLM context window end to end — design, assembly, retrieval, compression, optimization, and governance of everything you feed a model. The skill under every reliable agent — and under every good session with a coding agent: every module carries a <b>Dev Lens</b> naming its form in your IDE, from CLAUDE.md as a system prompt to what <code>/compact</code> quietly drops.</div>
-    <a class="card-link" href="courses/context-engineering/walkthrough/index.html">▶ Walkthroughs</a>
-    <div class="card-meta">
-      <span>32 modules</span>
-      <span>8 tracks</span>
-      <span>64 labs</span>
-      <span>2 reading paths</span>
-      <span>Foundational–Advanced</span>
-      <span class="card-path">/courses/context-engineering/</span>
-    </div>
-  </div>
-
-  <div class="course-card" style="--card-color: var(--rag)">
-    <a class="card-cover" href="courses/rag-master-class/index.html"
-       aria-label="RAG Master Class — open the course"></a>
-    <div class="card-step">Step 2</div>
-    <div class="card-icon">🔎</div>
-    <div class="card-tag">New · Applied Pillar</div>
-    <div class="card-title">RAG Master Class</div>
-    <div class="card-desc">Retrieval you can measure, architectures you can defend — chunking, embeddings, hybrid search and reranking in full depth, then multiple RAGs, agents that consume them, and supervisors over specialist agents, to a gated production deploy, plus two case studies: an agent over 15,000 ServiceNow incident tickets, and a track that builds an agent step by step (RAG, then tools, then MCP) over 10,000 tickets from a prior-auth application's nurses and physicians. Every number comes from a bench that runs offline on synthetic data.</div>
-    <a class="card-link" href="courses/rag-master-class/sims/question-simulator.html">▶ Simulators</a>
-    <div class="card-meta">
-      <span>37 modules</span>
-      <span>9 tracks</span>
-      <span>74 labs</span>
-      <span>6 simulators</span>
-      <span>Foundational–Advanced</span>
-      <span class="card-path">/courses/rag-master-class/</span>
-    </div>
-  </div>
-
-  <div class="course-card" style="--card-color: var(--kg)">
-    <a class="card-cover" href="courses/knowledge-graph/index.html"
-       aria-label="Knowledge Graphs for AI Agents — open the course"></a>
-    <div class="card-step">Step 3</div>
-    <div class="card-icon">🕸️</div>
-    <div class="card-tag">New · Applied Pillar</div>
-    <div class="card-title">Knowledge Graphs for AI Agents</div>
-    <div class="card-desc">From RAG limits to self-updating codebase brains — structural graphs (tree-sitter, Graphify), Google's Open Knowledge Format, MCP serving, and honest multi-arm token benchmarks measured on real repositories.</div>
-    <a class="card-link" href="courses/knowledge-graph/walkthrough/index.html">▶ Walkthroughs</a>
-    <div class="card-meta">
-      <span>14 modules</span>
-      <span>6 tracks</span>
-      <span>2 capstones</span>
-      <span>Intermediate–Advanced</span>
-      <span class="card-path">/courses/knowledge-graph/</span>
-    </div>
-  </div>
-
-  <div class="course-card" style="--card-color: var(--uce)">
-    <a class="card-cover" href="courses/ultimate-context-eng/index.html"
-       aria-label="Ultimate Context Engineering — open the course"></a>
-    <div class="card-step">Step 4</div>
-    <div class="card-icon">🧾</div>
-    <div class="card-tag">New · Synthesis Course</div>
-    <div class="card-title">Ultimate Context Engineering</div>
-    <div class="card-desc">Master the discipline on an app that shows its tokens — MedFlow Copilot's Token Lens itemizes every AI call by layer, cost, and correctness. Ten strategies, thirty labs, and one law: savings only count when the answer is right.</div>
-    <a class="card-link" href="courses/ultimate-context-eng/walkthrough/index.html">▶ Walkthroughs</a>
-    <div class="card-meta">
-      <span>15 modules</span>
-      <span>5 tracks</span>
-      <span>30 labs</span>
-      <span>All levels</span>
-      <span class="card-path">/courses/ultimate-context-eng/</span>
-    </div>
-  </div>
-
-</div>
-
-<!-- ════════════════════════ GROUP 3 · GOOGLE AI ════════════════════════ -->
-<div class="group-label">
-  <div class="g-title"><span class="g-kicker">Track 3</span>✨ Google AI</div>
-  <div class="g-path">Path: <b>Gemini Code Assist</b><span class="arr">→</span><b>Building with Gemini CLI</b></div>
-</div>
-
-<div class="course-grid">
-
-  <div class="course-card" style="--card-color: var(--gca)">
-    <a class="card-cover" href="courses/gemini-code-assist/index.html"
-       aria-label="Gemini Code Assist — open the course"></a>
-    <div class="card-step">Step 1</div>
-    <div class="card-icon">🧩</div>
-    <div class="card-tag">Google AI · IDE</div>
-    <div class="card-title">Gemini Code Assist</div>
-    <div class="card-desc">Beginner-friendly track for Google's AI pair programmer in VS Code and JetBrains — completion, chat, GEMINI.md context, agent mode, MCP, Gemini CLI, GitHub PR reviews, Cloud Run deployment, and enterprise controls.</div>
-    <a class="card-link" href="courses/gemini-code-assist/walkthrough/index.html">▶ Walkthroughs</a>
-    <div class="card-meta">
-      <span>12 modules</span>
-      <span>5 capstones</span>
-      <span>Beginner</span>
-      <span class="card-path">/courses/gemini-code-assist/</span>
-    </div>
-  </div>
-
-  <div class="course-card" style="--card-color: var(--gemini)">
-    <a class="card-cover" href="courses/gemini-cli/index.html"
-       aria-label="Building with Gemini CLI — open the course"></a>
-    <div class="card-step">Step 2</div>
-    <div class="card-icon">✨</div>
-    <div class="card-tag">Google AI</div>
-    <div class="card-title">Building with Gemini CLI</div>
-    <div class="card-desc">End-to-end track for Gemini CLI — prompting, GEMINI.md, skill files, plan mode, requirements, design, implementation, testing, deployment, MCP servers, extensions, GitHub Actions, and Google Cloud MCP.</div>
-    <a class="card-link" href="courses/gemini-cli/walkthrough/index.html">▶ Walkthroughs</a>
-    <div class="card-meta">
-      <span>17 modules</span>
-      <span>1 capstone</span>
-      <span>Beginner–Intermediate</span>
-      <span class="card-path">/courses/gemini-cli/</span>
-    </div>
-  </div>
-
-</div>
-
-<!-- ════════════════════════ GROUP 4 · OPEN SOURCE & CROSS-PROVIDER ════════════════════════ -->
-<div class="group-label">
-  <div class="g-title"><span class="g-kicker">Track 4</span>🦙 Open Source &amp; Cross-Provider</div>
-  <div class="g-path">Take in any order — each stands alone</div>
-</div>
-
-<div class="course-grid">
-
-  <div class="course-card" style="--card-color: var(--opensource)">
-    <a class="card-cover" href="courses/opensource/index.html"
-       aria-label="AI Agents with Mistral &amp; Ollama — open the course"></a>
-    <div class="card-icon">🦙</div>
-    <div class="card-tag">Open Source</div>
-    <div class="card-title">AI Agents with Mistral &amp; Ollama</div>
-    <div class="card-desc">Build production agents using open-source models. Covers the full agent stack — RAG, memory, multi-agent systems, guardrails, observability, deployment, and cost optimization — without vendor lock-in.</div>
-    <a class="card-link" href="courses/opensource/walkthrough/index.html">▶ Walkthroughs</a>
-    <div class="card-meta">
-      <span>24 modules</span>
-      <span>1 capstone</span>
-      <span>Intermediate</span>
-      <span class="card-path">/courses/opensource/</span>
-    </div>
-  </div>
-
-  <div class="course-card" style="--card-color: var(--multisdk)">
-    <a class="card-cover" href="courses/multi-sdk-agents/index.html"
-       aria-label="One Agent, Three SDKs — open the course"></a>
-    <div class="card-icon">🔀</div>
-    <div class="card-tag">Cross-SDK</div>
-    <div class="card-title">One Agent, Three SDKs</div>
-    <div class="card-desc">Build the same AI agent three ways — in the Anthropic (Claude), Google (Gemini), and OpenAI SDKs, side by side. Tool use, structured output, memory, RAG, multi-agent, and production, each mapped across all three so switching providers is a config change, not a rewrite.</div>
-    <a class="card-link" href="courses/multi-sdk-agents/walkthrough/index.html">▶ Walkthroughs</a>
-    <div class="card-meta">
-      <span>8 modules</span>
-      <span>Python + TypeScript</span>
-      <span>Beginner–Advanced</span>
-      <span class="card-path">/courses/multi-sdk-agents/</span>
-    </div>
-  </div>
-
-  <div class="course-card" style="--card-color: var(--ror)">
-    <a class="card-cover" href="courses/resolve-or-raise/index.html"
-       aria-label="Resolve or Raise — open the course"></a>
-    <div class="card-icon">🛎️</div>
-    <div class="card-tag">LangChain · LangGraph · Agno</div>
-    <div class="card-title">Resolve or Raise</div>
-    <div class="card-desc">Build a prior-auth portal's support agent with LangChain and LangGraph: it answers from live data when it can, raises a well-formed ServiceNow ticket when it can't, and never pretends otherwise. Graphs, interrupts, token economics, evals with a rubric judge, a night-shift capstone, and a capstone build in Agno: five RAG sources, four system prompts read as contracts, 15,000 profiled incidents, knowledge gaps closed, the whole stack in Docker with one click.</div>
-    <div class="card-links">
-      <a class="card-link" href="courses/resolve-or-raise/index.html#m00">▶ Start with M00</a>
-      <a class="card-link" href="https://github.com/varasrinivas/pap-knowledge-desk" target="_blank" rel="noopener">⌥ Capstone repo (GitHub)</a>
-      <a class="card-link" href="https://github.com/varasrinivas/pap-knowledge-desk/blob/main/docs/AGENT-PROMPTS.md" target="_blank" rel="noopener">✎ System prompts doc</a>
-    </div>
-    <div class="card-meta">
-      <span>45 modules</span>
-      <span>2 capstones</span>
-      <span>Runs offline</span>
-      <span>Intermediate</span>
-      <span class="card-path">/courses/resolve-or-raise/</span>
-    </div>
-  </div>
-
-  <div class="course-card" style="--card-color: var(--compare)">
-    <a class="card-cover" href="courses/ai-cli-comparison/index.html"
-       aria-label="AI CLI Tools Compared — open the course"></a>
-    <div class="card-icon">⚖️</div>
-    <div class="card-tag">Comparison</div>
-    <div class="card-title">AI CLI Tools Compared</div>
-    <div class="card-desc">Side-by-side analysis of Claude Code vs Gemini CLI vs GitHub Copilot. Covers setup, prompting, code generation, file ops, agentic workflows, MCP, CI/CD, cost, and how to pick the right stack.</div>
-    <a class="card-link" href="courses/ai-cli-comparison/walkthrough/index.html">▶ Walkthroughs</a>
-    <div class="card-meta">
-      <span>10 modules</span>
-      <span>1 capstone</span>
-      <span>All levels</span>
-      <span class="card-path">/courses/ai-cli-comparison/</span>
-    </div>
-  </div>
-
-</div>
-
-<!-- ════════════════════════ GROUP 5 · PRODUCTION & PLATFORM ════════════════════════ -->
-<div class="group-label">
-  <div class="g-title"><span class="g-kicker">Track 5</span>⚙️ Production &amp; Platform</div>
-  <div class="g-path">Path: <b>Production LLMOps</b><span class="arr">→</span><b>AI Platform Engineering</b></div>
-</div>
-
-<div class="course-grid">
-
-  <div class="course-card" style="--card-color: var(--llmops)">
-    <a class="card-cover" href="courses/llmops/llmops-course-map.html"
-       aria-label="Production LLMOps — open the course"></a>
-    <div class="card-step">Step 1</div>
-    <div class="card-icon">⚙️</div>
-    <div class="card-tag">Production · Operations</div>
-    <div class="card-title">Production LLMOps</div>
-    <div class="card-desc">The "Day 2" discipline for LLM systems already in production — evaluation, deployment, monitoring, incident response, drift, and governance. Keep agents reliable, observable, and accountable after launch.</div>
-    <a class="card-link" href="courses/llmops/course/walkthrough/index.html">▶ Walkthroughs</a>
-    <div class="card-meta">
-      <span>32 modules</span>
-      <span>8 tracks</span>
-      <span>64 labs</span>
-      <span>Intermediate–Advanced</span>
-      <span class="card-path">/courses/llmops/</span>
-    </div>
-  </div>
-
-  <div class="course-card" style="--card-color: var(--platform)">
-    <a class="card-cover" href="courses/ai-platform-engineering/index.html"
-       aria-label="AI Platform Engineering — open the course"></a>
-    <div class="card-step">Step 2</div>
-    <div class="card-icon">🏗️</div>
-    <div class="card-tag">Infrastructure Pillar</div>
-    <div class="card-title">AI Platform Engineering</div>
-    <div class="card-desc">Build the internal AI platform layer every team relies on — model gateway, prompt registry, guardrails, evaluation harness, cost controls, and compliance. Turn scattered AI experiments into shared infrastructure.</div>
-    <a class="card-link" href="courses/ai-platform-engineering/walkthrough/index.html">▶ Walkthroughs</a>
-    <div class="card-meta">
-      <span>32 modules</span>
-      <span>8 tracks</span>
-      <span>64 labs</span>
-      <span>Intermediate–Advanced</span>
-      <span class="card-path">/courses/ai-platform-engineering/</span>
-    </div>
-  </div>
-
-</div>
-
-<!-- ════════════════════════ ADOPTION IN PRACTICE ════════════════════════ -->
-
-<div class="group-label">
-  <div class="g-title"><span class="g-kicker">Track 6</span>🩺 Adoption in Practice</div>
-  <div class="g-path">Two routes through the same ground — pick the pack that matches your role, or take one workflow up the autonomy ladder, with a leadership guide to the same line</div>
-</div>
-
-<div class="course-grid">
-
-  <div class="course-card" style="--card-color: var(--priorauth)">
-    <a class="card-cover" href="courses/prior-auth-powered/index.html"
-       aria-label="Prior Auth, Powered — open the course"></a>
-    <div class="card-step">Step 1</div>
-    <div class="card-icon">🩺</div>
-    <div class="card-tag">Adoption · Delivery Roles</div>
-    <div class="card-title">Prior Auth, Powered</div>
-    <div class="card-desc">AI adoption for senior delivery professionals, on one synthetic prior-authorisation estate with real defects planted in it. A shared core, then a pack for your discipline — QA, performance, SQL, architecture, or engineering. Every case ends in an artifact you file, every lab runs dual-path (Claude Code or Copilot), and you measure your own before-and-after instead of being handed a number.</div>
-    <a class="card-link" href="courses/prior-auth-powered/orientation.html">▶ Orientation</a>
-    <div class="card-meta">
-      <span>54 cases</span>
-      <span>6 packs</span>
-      <span>1 capstone</span>
-      <span>Senior</span>
-      <span class="card-path">/courses/prior-auth-powered/</span>
-    </div>
-  </div>
-
-  <div class="course-card" style="--card-color: var(--autonomy)">
-    <a class="card-cover" href="courses/autonomy-line-course/index.html"
-       aria-label="The Autonomy Line, practitioner course — open the course"></a>
-    <div class="card-step">Step 2</div>
-    <div class="card-icon">🚇</div>
-    <div class="card-tag">Adoption · Autonomy Ladder</div>
-    <div class="card-title">The Autonomy Line</div>
-    <div class="card-desc">Take one workflow from an assistant suggesting a line to an agent running whole cases, and build the controls that earn each step. Nine modules on prior-authorisation intake, with nothing to install: every lab runs on evidence shipped with the course, including the agent output that is plausible and wrong. Each module ends in something you keep — a context file, a review checklist, an autonomy boundary, a golden set, an agent card.</div>
-    <div class="card-links">
-      <a class="card-link" href="courses/autonomy-line-course/index.html#m0">▶ Start building</a>
-      <a class="card-link" href="courses/autonomy-line-course/autonomy-line-course.pdf" download>⬇ Download the PDF</a>
-    </div>
-    <div class="card-meta">
-      <span>9 modules</span>
-      <span>~7 hours</span>
-      <span>No setup</span>
-      <span>Practitioner</span>
-      <span class="card-path">/courses/autonomy-line-course/</span>
-    </div>
-  </div>
-
-  <div class="course-card" style="--card-color: var(--autonomy)">
-    <a class="card-cover" href="courses/the-autonomy-line/index.html"
-       aria-label="The Autonomy Line, leadership guide — open the guide"></a>
-    <div class="card-step">For leaders</div>
-    <div class="card-icon">🗺️</div>
-    <div class="card-tag">Adoption · Leadership Guide</div>
-    <div class="card-title">The Autonomy Line: Leadership Guide</div>
-    <div class="card-desc">The argument the practitioner course is built on, written for the people who fund the work: autonomy is earned, one station at a time. Enterprise AI adoption drawn as a transit line, from coding assistants to orchestrated agents, with the platform, guardrails, people and value work each station needs. A six-question assessment places your organisation on the line, and the route card prints on one page.</div>
-    <div class="card-links">
-      <a class="card-link" href="courses/the-autonomy-line/index.html#s0">▶ Start the route</a>
-      <a class="card-link" href="courses/the-autonomy-line/the-autonomy-line.pdf" download>⬇ Download the PDF</a>
-    </div>
-    <div class="card-meta">
-      <span>9 stops</span>
-      <span>~2 hours</span>
-      <span>4 tools</span>
-      <span>Leadership</span>
-      <span class="card-path">/courses/the-autonomy-line/</span>
-    </div>
-  </div>
-
-  <div class="course-card" style="--card-color: var(--leadagents)">
-    <a class="card-cover" href="courses/leading-agent-development/index.html"
-       aria-label="Leading AI Agent Development — open the course"></a>
-    <div class="card-step">For managers</div>
-    <div class="card-icon">🧭</div>
-    <div class="card-tag">Adoption · Reviewing Agent Work</div>
-    <div class="card-title">Leading AI Agent Development</div>
-    <div class="card-desc">For managers who oversee teams building agents and need to review their design docs and demos without reading code. The concepts, a framework-neutral review playbook, the architecture decisions a demo hides (retrieval and reranking, prompts, data access at scale), six capstone businesses and a complete support agent, each with standalone HTML and PDF.</div>
-    <div class="card-links">
-      <a class="card-link" href="courses/leading-agent-development/agent-development-course.html">▶ Start the course</a>
-      <a class="card-link" href="courses/leading-agent-development/agent-development-course.pdf" download>⬇ Download the PDF</a>
-      <a class="card-link" href="courses/leading-agent-development/agent-review-cheat-sheets.html">▤ All cheat sheets</a>
-      <a class="card-link" href="courses/leading-agent-development/agent-dev-backlog.html">▤ Development backlog</a>
-      <a class="card-link" href="courses/leading-agent-development/agent-review-cheat-sheets.pdf" download>⬇ Cheat sheets PDF</a>
-    </div>
-    <div class="card-meta">
-      <span>14 modules</span>
-      <span>13 guides</span>
-      <span>No code</span>
-      <span>Managers</span>
-      <span class="card-path">/courses/leading-agent-development/</span>
-    </div>
-  </div>
-
-  <div class="course-card" style="--card-color: var(--agentguide)">
-    <a class="card-cover" href="courses/agent-development-guide/index.html"
-       aria-label="Agent Development Course — open the course"></a>
-    <div class="card-step">For agent teams</div>
-    <div class="card-icon">🧩</div>
-    <div class="card-tag">Adoption · Building Agents as a Team</div>
-    <div class="card-title">Agent Development Course</div>
-    <div class="card-desc">Build one AI agent from the first question to production, as a team. Twelve modules follow the field guide's Phases 0–10, each with ordered reading, the same step done for a support agent that resolves or raises a ticket, practice on your own agent, and a sign-off checkpoint. Comes with a reference implementation, a 243-task backlog that plans bolts or sprints, a review scorecard and a phase tracker.</div>
-    <div class="card-links">
-      <a class="card-link" href="courses/agent-development-guide/index.html#m0">▶ Start with M0</a>
-      <a class="card-link" href="courses/agent-development-guide/agent-builders-field-guide.html">▤ Field guide</a>
-      <a class="card-link" href="courses/agent-development-guide/agent-dev-backlog.html">▤ Development backlog</a>
-      <a class="card-link" href="courses/agent-development-guide/agent-development-task-tracker.xlsx" download>⬇ Task tracker (Excel)</a>
-    </div>
-    <div class="card-meta">
-      <span>12 modules</span>
-      <span>1 capstone</span>
-      <span>9 roles</span>
-      <span>Whole team</span>
-      <span class="card-path">/courses/agent-development-guide/</span>
-    </div>
-  </div>
-
-</div>
-
-<!-- ════════════════════════ COMPANION RESOURCES ════════════════════════ -->
-<div class="group-label">
-  <div class="g-title"><span class="g-kicker">Extras</span>📱 Companion Resources</div>
-</div>
-
-<div class="secondary-grid">
-  <a href="mobile/index.html" class="secondary-card">
-    <div class="sc-icon">📱</div>
-    <div>
-      <div class="sc-title">Mobile Study Guide</div>
-      <div class="sc-desc">Condensed mobile-friendly versions of the course modules with pseudocode and quick-reference cards.</div>
-    </div>
-  </a>
-</div>
-
-<footer>
-  AI Agent Development Course Catalog &mdash; Built with Claude Code
-</footer>
-
+  <section class="part" id="track0"><header><p class="pn">Track 0</p><h2>Start Here</h2><p class="why">New to AI coding tools? <b>This is the front door</b> — one real repo, twelve real bugs, in Java or Python</p></header>
+  <ol class="mods">
+    <li class="mod"><span class="n" style="--c:#FB7185">🍜</span><div class="body"><a class="t" href="courses/code-with-ai/index.html">Code With AI</a><p>Learn AI-assisted development the way you'll actually do it — inside one real codebase seeded with twelve deliberate bugs. Every lab runs three ways (Claude Code, Copilot, or a free tier), every fix has to be verified, and the final track has you measure your own before-and-after honestly.</p><div class="chips"><a class="chip" href="courses/code-with-ai/walkthrough/index.html">Walkthroughs</a></div><small>Start Here · Fundamentals · Java · 44 episodes · 8 tracks · 1 capstone · Beginner</small></div></li>
+    <li class="mod"><span class="n" style="--c:#FB7185">🐍</span><div class="body"><a class="t" href="courses/code-with-ai-python/index.html">Code With AI — Python edition</a><p>The same course and the same twelve deliberate bugs, rebuilt on a FastAPI + SQLAlchemy backend you run with uv.</p><div class="chips"><a class="chip" href="courses/code-with-ai-python/walkthrough/index.html">Walkthroughs</a></div><small>Start Here · Fundamentals · Python · 44 episodes · 8 tracks · 1 capstone · Beginner</small></div></li>
+    <li class="mod"><span class="n" style="--c:#FB7185">📚</span><div class="body"><a class="t" href="courses/starter-guides/index.html">Starter Guides — Quick Study</a><p>Thinking about the AI path and not sure where to begin? Four starter PDFs, in order, on one study page. Stop 1 is the map: The Autonomy Line, where AI work is heading.</p><div class="chips"><a class="chip" href="courses/starter-guides/index.html">Start studying</a><a class="chip" href="courses/starter-guides/index.html#pdfs">All five PDFs</a></div><small>Start Here · Study Guide · 4 stops · 5 PDFs · 11 diagrams · Beginner</small></div></li>
+  </ol></section>
+  <section class="part" id="track1"><header><p class="pn">Track 1</p><h2>Agents with Claude</h2><p class="why">In order: <b>AI Agents with Claude</b><span class="arr">→</span><b>Claude Code Mastery</b><span class="arr">→</span><b>MCP</b><span class="arr">→</span><b>SDD by hand</b><span class="arr">→</span><b>SDD with OpenSpec</b></p></header>
+  <ol class="mods">
+    <li class="mod"><span class="n" style="--c:#D4A843">1</span><div class="body"><a class="t" href="courses/claude-agents/index.html">Building AI Agents with Claude</a><p>Full agent lifecycle — design, build, protect, observe, deploy. 9 tracks from LLM fundamentals through multi-agent production systems. Includes certification prep for Claude Certified Architect.</p><div class="chips"><a class="chip" href="courses/claude-agents/walkthrough/index.html">Walkthroughs</a></div><small>Flagship Course · 33 modules · 9 tracks · 19 capstone labs · Python + TypeScript</small></div></li>
+    <li class="mod"><span class="n" style="--c:#A855F7">2</span><div class="body"><a class="t" href="courses/cc/index.html">Claude Code Mastery</a><p>Deep-dive into Claude Code — API essentials, prompt engineering, CLAUDE.md, permissions, subagents, hooks, tool use, MCP, and the Agent SDK. Fast path for engineers already comfortable with LLMs.</p><div class="chips"><a class="chip" href="courses/cc/walkthrough/index.html">Walkthroughs</a></div><small>Direct Track · 16 modules · 1 capstone · Intermediate–Advanced</small></div></li>
+    <li class="mod"><span class="n" style="--c:#06B6D4">3</span><div class="body"><a class="t" href="courses/mcp/index.html">MCP — Model Context Protocol</a><p>Build, secure, and orchestrate MCP servers from scratch. Covers resources, prompts, HTTP/SSE transport, multi-server orchestration, and production patterns for Claude Code and IDE integrations.</p><div class="chips"><a class="chip" href="courses/mcp/walkthrough/index.html">Walkthroughs</a></div><small>Protocol Deep Dive · 9 modules · 1 capstone · Intermediate</small></div></li>
+    <li class="mod"><span class="n" style="--c:#84CC16">4</span><div class="body"><a class="t" href="courses/spec-driven-development/index.html">Spec-Driven Development with Claude</a><p>Stop prompting and start specifying — a field guide to specs Claude can build against. Three scenarios (feature, defect, migration) worked end-to-end on a healthcare prior-auth platform, with a runnable Spring Boot companion repo and four hands-on labs.</p><div class="chips"><a class="chip" href="courses/spec-driven-development/walkthrough/index.html">Labs quick reference</a></div><small>New · Methodology · Field guide · 3 scenarios · 4 labs · Intermediate</small></div></li>
+    <li class="mod"><span class="n" style="--c:#F59E0B">5</span><div class="body"><a class="t" href="courses/openspec/index.html">Spec-Driven Development with OpenSpec</a><p>The same discipline, tool-assisted. OpenSpec keeps capability specs as living documentation and every change as a reviewable proposal that is archived back into them — across Claude Code, Cursor, Copilot and 30+ agents. Nine phases from setup through governance, in Python and Java.</p><div class="chips"><a class="chip" href="courses/openspec/labs/index.html">Lab bundles — Python · Java · Data</a></div><small>New · Tooling · 9 phases · 28 hands-on labs · Python + Java · Intermediate</small></div></li>
+    <li class="mod"><span class="n" style="--c:#0E7490">6</span><div class="body"><a class="t" href="courses/ai-dlc-execution/index.html">AWS AI-DLC, Step by Step</a><p>The AI-Driven Development Lifecycle run with AI-DLC Workflows on Claude Code: workspace setup, the concepts, a 17-step run from a Slack message to a merged pull request (Java or Python), and a team of four developers on one Rally feature.</p><div class="chips"><a class="chip" href="courses/ai-dlc-execution/aidlc-hello-world-java/aidlc-hello-world-java-run.html">Hands-on run (Java)</a><a class="chip" href="courses/ai-dlc-execution/aidlc-hello-world-python/aidlc-hello-world-python-run.html">Hands-on run (Python)</a><a class="chip" href="courses/ai-dlc-execution/aidlc-rally-team-of-four.html">Four developers (Java)</a><a class="chip" href="courses/ai-dlc-execution/aidlc-rally-team-of-four-python.html">Four developers (Python)</a><a class="chip" href="courses/ai-dlc-execution/aidlc-rally-team-of-four.html#follow">Sample repos to follow along</a><a class="chip" href="courses/ai-dlc-execution/aidlc-f1220-runbook.html">Team runbook: a real run (F1220)</a><a class="chip" href="courses/ai-dlc-execution/aidlc-quality-checks.html">Quality checks in CLAUDE.md: a real run</a></div><small>New · Methodology · Workspace setup · Concepts + cheat sheet · 17-step run · Java · Spring Boot · Python · FastAPI · Intermediate</small></div></li>
+    <li class="mod"><span class="n" style="--c:#7C3AED">7</span><div class="body"><a class="t" href="courses/archon/index.html">Archon, Step by Step</a><p>Archon, the open-source YAML workflow engine for AI coding, run with Claude Code: the concepts, a team workspace, a 20-step real run of the AI-DLC course's request, and a 16-step run of one bug across two repos, each compared with AI-DLC.</p><div class="chips"><a class="chip" href="courses/archon/archon-hello-world-java/archon-hello-world-java-run.html">Hands-on run (Java)</a><a class="chip" href="courses/archon/archon-hello-world-java/archon-two-repos-run.html">Two-repo run (folder project)</a><a class="chip" href="courses/archon/archon-workspace-setup.html">Set up Archon and a team workspace</a><a class="chip" href="courses/archon/archon-concepts-onepage.html">One-page cheat sheet</a><a class="chip" href="courses/archon/archon-concepts-map.svg">Concept map</a><a class="chip" href="https://github.com/varasrinivas/ai-dlc-archon" target="_blank" rel="noopener">Course repo (GitHub)</a></div><small>New · Tooling · Concepts + cheat sheet · Workspace setup · 20-step run · Two-repo run · Java · Spring Boot · Intermediate</small></div></li>
+  </ol></section>
+  <section class="part" id="track1-stacks"><header><p class="pn">Track 1 · specializations</p><h2>OpenSpec by stack</h2><p class="why">Take after the OpenSpec course — each applies the same workflow to one stack</p></header>
+  <div class="refs"><a class="ref" href="courses/openspec/frontend.html"><b>⚛️ OpenSpec for React Frontends</b><span>Component specs, contract-driven UI work, and keeping the frontend honest against a changing API.</span></a><a class="ref" href="courses/openspec/api.html"><b>🌱 OpenSpec for Spring Boot APIs</b><span>Capability specs for services, contract tests in CI, and a spec-coverage gate that fails a build when a scenario has no test.</span></a><a class="ref" href="courses/openspec/data.html"><b>🗄️ OpenSpec for Data Engineering</b><span>Bronze/silver/gold pipelines specified before they are built, with data-quality expectations as acceptance criteria.</span></a></div></section>
+  <section class="part" id="track2"><header><p class="pn">Track 2</p><h2>Context Engineering &amp; Knowledge</h2><p class="why">In order: <b>Context Engineering</b><span class="arr">→</span><b>RAG Master Class</b><span class="arr">→</span><b>Knowledge Graphs</b><span class="arr">→</span><b>Ultimate Context Engineering</b></p></header>
+  <ol class="mods">
+    <li class="mod"><span class="n" style="--c:#14B8A6">1</span><div class="body"><a class="t" href="courses/context-engineering/index.html">Context Engineering</a><p>Master the LLM context window end to end — design, assembly, retrieval, compression, optimization, and governance of everything you feed a model.</p><div class="chips"><a class="chip" href="courses/context-engineering/walkthrough/index.html">Walkthroughs</a></div><small>Foundational Pillar · 32 modules · 8 tracks · 64 labs · 2 reading paths · Foundational–Advanced</small></div></li>
+    <li class="mod"><span class="n" style="--c:#0f8a7e">2</span><div class="body"><a class="t" href="courses/rag-master-class/index.html">RAG Master Class</a><p>Retrieval you can measure, architectures you can defend — chunking, embeddings, hybrid search and reranking in full depth, then multiple RAGs, agents that consume them, and supervisors over specialist agents, to a gated production deploy, plus two case studies: an agent over 15,000 ServiceNow incident tickets, and a track that builds an agent step by step (RAG, then tools, then MCP) over 10,000 tickets from a prior-auth application's nurses and physicians.</p><div class="chips"><a class="chip" href="courses/rag-master-class/sims/question-simulator.html">Simulators</a></div><small>New · Applied Pillar · 37 modules · 9 tracks · 74 labs · 6 simulators · Foundational–Advanced</small></div></li>
+    <li class="mod"><span class="n" style="--c:#8B5CF6">3</span><div class="body"><a class="t" href="courses/knowledge-graph/index.html">Knowledge Graphs for AI Agents</a><p>From RAG limits to self-updating codebase brains — structural graphs (tree-sitter, Graphify), Google's Open Knowledge Format, MCP serving, and honest multi-arm token benchmarks measured on real repositories.</p><div class="chips"><a class="chip" href="courses/knowledge-graph/walkthrough/index.html">Walkthroughs</a></div><small>New · Applied Pillar · 14 modules · 6 tracks · 2 capstones · Intermediate–Advanced</small></div></li>
+    <li class="mod"><span class="n" style="--c:#2e6b8a">4</span><div class="body"><a class="t" href="courses/ultimate-context-eng/index.html">Ultimate Context Engineering</a><p>Master the discipline on an app that shows its tokens — MedFlow Copilot's Token Lens itemizes every AI call by layer, cost, and correctness. Ten strategies, thirty labs, and one law: savings only count when the answer is right.</p><div class="chips"><a class="chip" href="courses/ultimate-context-eng/walkthrough/index.html">Walkthroughs</a></div><small>New · Synthesis Course · 15 modules · 5 tracks · 30 labs · All levels</small></div></li>
+  </ol></section>
+  <section class="part" id="track3"><header><p class="pn">Track 3</p><h2>Google AI</h2><p class="why">In order: <b>Gemini Code Assist</b><span class="arr">→</span><b>Building with Gemini CLI</b></p></header>
+  <ol class="mods">
+    <li class="mod"><span class="n" style="--c:#8B5CF6">1</span><div class="body"><a class="t" href="courses/gemini-code-assist/index.html">Gemini Code Assist</a><p>Beginner-friendly track for Google's AI pair programmer in VS Code and JetBrains — completion, chat, GEMINI.md context, agent mode, MCP, Gemini CLI, GitHub PR reviews, Cloud Run deployment, and enterprise controls.</p><div class="chips"><a class="chip" href="courses/gemini-code-assist/walkthrough/index.html">Walkthroughs</a></div><small>Google AI · IDE · 12 modules · 5 capstones · Beginner</small></div></li>
+    <li class="mod"><span class="n" style="--c:#4285F4">2</span><div class="body"><a class="t" href="courses/gemini-cli/index.html">Building with Gemini CLI</a><p>End-to-end track for Gemini CLI — prompting, GEMINI.md, skill files, plan mode, requirements, design, implementation, testing, deployment, MCP servers, extensions, GitHub Actions, and Google Cloud MCP.</p><div class="chips"><a class="chip" href="courses/gemini-cli/walkthrough/index.html">Walkthroughs</a></div><small>Google AI · 17 modules · 1 capstone · Beginner–Intermediate</small></div></li>
+  </ol></section>
+  <section class="part" id="track4"><header><p class="pn">Track 4</p><h2>Open Source &amp; Cross-Provider</h2><p class="why">Take in any order — each stands alone</p></header>
+  <ol class="mods">
+    <li class="mod"><span class="n" style="--c:#10B981">🦙</span><div class="body"><a class="t" href="courses/opensource/index.html">AI Agents with Mistral &amp; Ollama</a><p>Build production agents using open-source models. Covers the full agent stack — RAG, memory, multi-agent systems, guardrails, observability, deployment, and cost optimization — without vendor lock-in.</p><div class="chips"><a class="chip" href="courses/opensource/walkthrough/index.html">Walkthroughs</a></div><small>Open Source · 24 modules · 1 capstone · Intermediate</small></div></li>
+    <li class="mod"><span class="n" style="--c:#EC4899">🔀</span><div class="body"><a class="t" href="courses/multi-sdk-agents/index.html">One Agent, Three SDKs</a><p>Build the same AI agent three ways — in the Anthropic (Claude), Google (Gemini), and OpenAI SDKs, side by side. Tool use, structured output, memory, RAG, multi-agent, and production, each mapped across all three so switching providers is a config change, not a rewrite.</p><div class="chips"><a class="chip" href="courses/multi-sdk-agents/walkthrough/index.html">Walkthroughs</a></div><small>Cross-SDK · 8 modules · Python + TypeScript · Beginner–Advanced</small></div></li>
+    <li class="mod"><span class="n" style="--c:#4FB596">🛎️</span><div class="body"><a class="t" href="courses/resolve-or-raise/index.html">Resolve or Raise</a><p>Build a prior-auth portal's support agent with LangChain and LangGraph: it answers from live data when it can, raises a well-formed ServiceNow ticket when it can't, and never pretends otherwise.</p><div class="chips"><a class="chip" href="courses/resolve-or-raise/index.html#m00">Start with M00</a><a class="chip" href="https://github.com/varasrinivas/pap-knowledge-desk" target="_blank" rel="noopener">Capstone repo (GitHub)</a><a class="chip" href="https://github.com/varasrinivas/pap-knowledge-desk/blob/main/docs/AGENT-PROMPTS.md" target="_blank" rel="noopener">✎ System prompts doc</a></div><small>LangChain · LangGraph · Agno · 45 modules · 2 capstones · Runs offline · Intermediate</small></div></li>
+    <li class="mod"><span class="n" style="--c:#F97316">⚖️</span><div class="body"><a class="t" href="courses/ai-cli-comparison/index.html">AI CLI Tools Compared</a><p>Side-by-side analysis of Claude Code vs Gemini CLI vs GitHub Copilot. Covers setup, prompting, code generation, file ops, agentic workflows, MCP, CI/CD, cost, and how to pick the right stack.</p><div class="chips"><a class="chip" href="courses/ai-cli-comparison/walkthrough/index.html">Walkthroughs</a></div><small>Comparison · 10 modules · 1 capstone · All levels</small></div></li>
+  </ol></section>
+  <section class="part" id="track5"><header><p class="pn">Track 5</p><h2>Production &amp; Platform</h2><p class="why">In order: <b>Production LLMOps</b><span class="arr">→</span><b>AI Platform Engineering</b></p></header>
+  <ol class="mods">
+    <li class="mod"><span class="n" style="--c:#EF4444">1</span><div class="body"><a class="t" href="courses/llmops/llmops-course-map.html">Production LLMOps</a><p>The "Day 2" discipline for LLM systems already in production — evaluation, deployment, monitoring, incident response, drift, and governance. Keep agents reliable, observable, and accountable after launch.</p><div class="chips"><a class="chip" href="courses/llmops/course/walkthrough/index.html">Walkthroughs</a></div><small>Production · Operations · 32 modules · 8 tracks · 64 labs · Intermediate–Advanced</small></div></li>
+    <li class="mod"><span class="n" style="--c:#6366F1">2</span><div class="body"><a class="t" href="courses/ai-platform-engineering/index.html">AI Platform Engineering</a><p>Build the internal AI platform layer every team relies on — model gateway, prompt registry, guardrails, evaluation harness, cost controls, and compliance. Turn scattered AI experiments into shared infrastructure.</p><div class="chips"><a class="chip" href="courses/ai-platform-engineering/walkthrough/index.html">Walkthroughs</a></div><small>Infrastructure Pillar · 32 modules · 8 tracks · 64 labs · Intermediate–Advanced</small></div></li>
+  </ol></section>
+  <section class="part" id="track6"><header><p class="pn">Track 6</p><h2>Adoption in Practice</h2><p class="why">Two routes through the same ground — pick the pack that matches your role, or take one workflow up the autonomy ladder, with a leadership guide to the same line</p></header>
+  <ol class="mods">
+    <li class="mod"><span class="n" style="--c:#FFB020">1</span><div class="body"><a class="t" href="courses/prior-auth-powered/index.html">Prior Auth, Powered</a><p>AI adoption for senior delivery professionals, on one synthetic prior-authorisation estate with real defects planted in it. A shared core, then a pack for your discipline — QA, performance, SQL, architecture, or engineering.</p><div class="chips"><a class="chip" href="courses/prior-auth-powered/orientation.html">Orientation</a></div><small>Adoption · Delivery Roles · 54 cases · 6 packs · 1 capstone · Senior</small></div></li>
+    <li class="mod"><span class="n" style="--c:#E1251B">2</span><div class="body"><a class="t" href="courses/autonomy-line-course/index.html">The Autonomy Line</a><p>Take one workflow from an assistant suggesting a line to an agent running whole cases, and build the controls that earn each step.</p><div class="chips"><a class="chip" href="courses/autonomy-line-course/index.html#m0">Start building</a><a class="chip" href="courses/autonomy-line-course/autonomy-line-course.pdf" download>Download the PDF</a></div><small>Adoption · Autonomy Ladder · 9 modules · ~7 hours · No setup · Practitioner</small></div></li>
+    <li class="mod"><span class="n" style="--c:#E1251B">🗺️</span><div class="body"><a class="t" href="courses/the-autonomy-line/index.html">The Autonomy Line: Leadership Guide</a><p>The argument the practitioner course is built on, written for the people who fund the work: autonomy is earned, one station at a time.</p><div class="chips"><a class="chip" href="courses/the-autonomy-line/index.html#s0">Start the route</a><a class="chip" href="courses/the-autonomy-line/the-autonomy-line.pdf" download>Download the PDF</a></div><small>Adoption · Leadership Guide · 9 stops · ~2 hours · 4 tools · Leadership</small></div></li>
+    <li class="mod"><span class="n" style="--c:#2F5BD8">🧭</span><div class="body"><a class="t" href="courses/leading-agent-development/index.html">Leading AI Agent Development</a><p>For managers who oversee teams building agents and need to review their design docs and demos without reading code.</p><div class="chips"><a class="chip" href="courses/leading-agent-development/agent-development-course.html">Start the course</a><a class="chip" href="courses/leading-agent-development/agent-development-course.pdf" download>Download the PDF</a><a class="chip" href="courses/leading-agent-development/agent-review-cheat-sheets.html">▤ All cheat sheets</a><a class="chip" href="courses/leading-agent-development/agent-dev-backlog.html">▤ Development backlog</a><a class="chip" href="courses/leading-agent-development/agent-review-cheat-sheets.pdf" download>Cheat sheets PDF</a></div><small>Adoption · Reviewing Agent Work · 14 modules · 13 guides · No code · Managers</small></div></li>
+    <li class="mod"><span class="n" style="--c:#0E7F81">🧩</span><div class="body"><a class="t" href="courses/agent-development-guide/index.html">Agent Development Course</a><p>Build one AI agent from the first question to production, as a team. Twelve modules follow the field guide's Phases 0–10, each with ordered reading, the same step done for a support agent that resolves or raises a ticket, practice on your own agent, and a sign-off checkpoint.</p><div class="chips"><a class="chip" href="courses/agent-development-guide/index.html#m0">Start with M0</a><a class="chip" href="courses/agent-development-guide/agent-builders-field-guide.html">▤ Field guide</a><a class="chip" href="courses/agent-development-guide/agent-dev-backlog.html">▤ Development backlog</a><a class="chip" href="courses/agent-development-guide/agent-development-task-tracker.xlsx" download>Task tracker (Excel)</a></div><small>Adoption · Building Agents as a Team · 12 modules · 1 capstone · 9 roles · Whole team</small></div></li>
+  </ol></section>
+  <section class="part" id="extras"><header><p class="pn">Extras</p><h2>Companion Resources</h2></header>
+  <div class="refs"><a class="ref" href="mobile/index.html"><b>📱 Mobile Study Guide</b><span>Condensed mobile-friendly versions of the course modules with pseudocode and quick-reference cards.</span></a></div></section>
+</main>
+<footer>AI Agent Development Course Catalog &mdash; Built with Claude Code</footer>
 </body>
 </html>
